@@ -1,0 +1,3 @@
+### ListNotices
+
+GET http://localhost:3001/api/notices/
