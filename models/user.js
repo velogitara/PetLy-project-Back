@@ -33,7 +33,7 @@ const userSchema = new Schema(
 
     birthday: {
       type: Date,
-      default: '00.00.0000',
+      default: '',
     },
 
     myPets: {
@@ -56,13 +56,40 @@ const userSchema = new Schema(
     },
     verificationToken: {
       type: String,
-      required: [true, 'Verify token is required'],
+      default: '',
     },
   },
   { versionKey: false, timestamps: true }
 );
 
 userSchema.post('save', handleSaveError);
+
+const registerSchema = joi.object({
+  name: joi
+    .string()
+    .regex(/^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/)
+    .required()
+    .messages({
+      'string.name': `{{#label}} must be a valid email`,
+      'any.required': `missing required field: {{#label}}`,
+    }),
+  email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
+    'string.email': `{{#label}} must be a valid email`,
+    'any.required': `missing required field: {{#label}}`,
+  }),
+  password: joi.string().required().messages({
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'any.required': `missing required field: {{#label}}`,
+  }),
+  phone: joi
+    .string()
+    .regex(/^\+?[1-9][0-9]{7,14}$/)
+    .required()
+    .messages({
+      'string.phone': `{{#label}} cannot be an empty field`,
+      'any.required': `missing required field: {{#label}}`,
+    }),
+});
 
 const signInSchema = joi.object({
   email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
@@ -82,14 +109,15 @@ const resendVerifyEmailSchema = joi.object({
   }),
 });
 
-const schemas = {
+const User = model('user', userSchema);
+
+const userSchemas = {
   signInSchema,
+  registerSchema,
   resendVerifyEmailSchema,
 };
 
-const User = model('user', userSchema);
-
 module.exports = {
   User,
-  schemas,
+  userSchemas,
 };

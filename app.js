@@ -2,11 +2,14 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs/promises');
+const moment = require('moment');
+
 require('dotenv').config();
 
 const { ROUTES } = require('./routes/constants');
 
-// const authRouter = require('./routes/api/auth');
+const authRouter = require('./routes/api/auth');
 const noticesRouter = require('./routes/api/notices');
 // const newsRouter = require('./routes/api/news');
 // const servicesRouter = require('./routes/api/services');
@@ -20,7 +23,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(ROUTES.auth.baseRoute, authRouter);
+app.use(async (req, res, next) => {
+  const { method, url } = req;
+  const date = moment().format('DD-MM-YYYY_hh:mm:ss');
+  await fs.appendFile('server.log', `\n${method} ${url} ${date}`);
+  next();
+});
+
+app.use(ROUTES.auth.baseRoute, authRouter);
 app.use(ROUTES.notices.baseRoute, noticesRouter);
 // app.use(ROUTES.news.baseRoute, newsRouter);
 // app.use(ROUTES.services.baseRoute, servicesRouter);
