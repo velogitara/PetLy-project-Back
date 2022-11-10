@@ -8,7 +8,7 @@ const {
   ROUTES: { notices },
 } = require('../constants');
 
-console.log(notices.getAll);
+// console.log(notices.getAll);
 
 router.get(notices.getAll, controllerWrapper(controller.listNotices));
 
