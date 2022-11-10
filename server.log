@@ -20,3 +20,4 @@ POST /api/users/register 09-11-2022_07:54:16
 POST /api/users/register 09-11-2022_07:56:12
 POST /api/users/register 09-11-2022_07:57:36
 POST /api/users/register 09-11-2022_09:37:08
+POST /api/auth/login 10-11-2022_11:56:54
