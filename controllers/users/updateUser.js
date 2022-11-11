@@ -1,11 +1,11 @@
-const { User } = require("../../models");
+const { User } = require('../../models');
 const { requestError } = require('../../helpers');
 
 async function updateUser(req, res, next) {
-  const {body} = req;
+  const { body } = req;
 
   if (!body) {
-    throw requestError(400, "Missing fields");
+    throw requestError(400, 'Missing fields');
   }
 
   const user = await User.findByIdAndUpdate(req.user._id, body, {
@@ -13,12 +13,12 @@ async function updateUser(req, res, next) {
   });
 
   if (!user) {
-    throw requestError(404, "Not found");
+    throw requestError(404, 'Not found');
   }
 
   res.json({
     data: {
-      user: user
+      user: user,
     },
   });
 }
