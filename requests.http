@@ -68,3 +68,8 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
     "location": "Dnipro",
     "sex": "male"
 }
+
+#######NEWS###########
+
+###listNews#####
+GET http://localhost:3001/api/news

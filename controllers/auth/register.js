@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const { nanoid } = require('nanoid');
 
 const { requestError } = require('../../helpers');

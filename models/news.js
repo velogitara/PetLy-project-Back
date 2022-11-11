@@ -8,7 +8,10 @@ const newsSchema = new Schema(
       type: String,
       required: [true, 'Please, provide title for news'],
     },
-    article: {
+    url: {
+      type: String,
+    },
+    description: {
       type: String,
       required: [true, 'Please, provide article for news'],
     },
@@ -19,7 +22,8 @@ newsSchema.post('save', handleSaveError);
 
 const addNewsSchema = Joi.object({
   title: Joi.string().required(),
-  article: Joi.string().required(),
+  url: Joi.string().required(),
+  description: Joi.string().required(),
 });
 
 const News = model('news', newsSchema);
