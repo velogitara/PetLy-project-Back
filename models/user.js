@@ -19,7 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Name is required'],
     },
-    avatarURL: { type: String },
+    avatarURL: { type: String, default: '' },
 
     location: {
       type: String,
@@ -98,7 +98,6 @@ const updateSchema = joi
   .object({
     name: joi.string().messages({
       'string.base': `{{#label}} should be a type of 'text'`,
-      'string.empty': `{{#label}} cannot be an empty field`,
     }),
     email: joi
       .string()
@@ -107,7 +106,12 @@ const updateSchema = joi
     phone: joi.string().pattern(regexp.phone).messages({
       'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
     }),
-    favorite: joi.bool().messages({ 'bool.base': `{{#label}} should be a type of 'boolean'` }),
+    birthday: joi.date().messages({
+      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: YYYY-MM-DD`,
+    }),
+    location: joi.string().messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+    }),
   })
   .min(1)
   .messages({ 'any.min': 'missing fields' });
