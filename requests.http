@@ -73,3 +73,15 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
 
 ###listNews#####
 GET http://localhost:3001/api/news
+
+### addNews
+
+POST http://localhost:3001/api/news
+content-type: application/json
+
+{
+"title":"Lorem ipsum",
+"url":"https://www.kmlvm.com.ua/v-den-veterynara-v-stolytsi-projde-bezkoshtov…",
+"description":"В неділю, 14 серпня, в Тимчасовому притулку для тварин «ВДНГ» пройде т…"
+
+}
