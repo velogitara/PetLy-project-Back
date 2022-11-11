@@ -1,3 +1,39 @@
 ### ListNotices
 
 GET http://localhost:3001/api/notices/
+
+### ListNoticesByCategory
+
+GET http://localhost:3001/api/notices/categories/lost
+
+### GetNotiseById
+
+GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
+
+### SignUp
+
+POST http://localhost:3001/api/auth/register/
+content-type: application/json
+
+{
+    "name": "Ivetta Leana",
+    "email": "ivetta@mail.com",
+    "password": "12345",
+    "phone": "+1111111111"
+}
+
+### SignIn
+
+POST http://localhost:3001/api/auth/login/
+content-type: application/json
+
+{
+    "email": "ivetta@mail.com",
+    "password": "12345"
+}
+
+### SignOut
+
+GET  http://localhost:3001/api/auth/logout/
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmQwNDQzMTJlYTdmNjRhNjYyMjgyYiIsImlhdCI6MTY2ODA5MjQ2MCwiZXhwIjoxNjY4MTM1NjYwfQ.-0WXru45oGdBDZK8ePoh_cP9xy200dnX3BDt0Hig-Ck

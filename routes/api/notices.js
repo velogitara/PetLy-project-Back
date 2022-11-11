@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { controllerWrapper } = require('../../helpers');
 const controller = require('../../controllers/notices');
-// const { validateBody, isValidId } = require('../../middlewares');
+// const { athenticate, validateBody, isValidId } = require('../../middlewares');
+const { isValidId } = require('../../middlewares');
 // const { schemas } = require('../../models/notices');
 const {
   ROUTES: { notices },
@@ -12,7 +13,9 @@ const {
 
 router.get(notices.getAll, controllerWrapper(controller.listNotices));
 
-// router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
+router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCategory));
+
+router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
 // router.post(
 //   notices.addNotice,

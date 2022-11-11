@@ -2,7 +2,9 @@
 const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
-const { regexp } = require('../helpers');
+// const { regexp } = require('../helpers');
+
+const CATEGORIES = ['lost', 'sell', 'goodhands'];
 
 const noticeSchema = new Schema({
   category: {
@@ -11,12 +13,12 @@ const noticeSchema = new Schema({
   },
   title: {
     type: String,
-    required: [true, 'Please, provide title for notice'],
+    required: [true, 'Set title for notice'],
   },
 
   description: {
     type: String,
-    required: [true, 'Please, provide description for notice'],
+    required: [true, 'Set description for notice'],
   },
 
   name: {
@@ -26,7 +28,7 @@ const noticeSchema = new Schema({
 
   birthday: {
     type: Date,
-    default: '00.00.0000',
+    default: '0000',
   },
 
   breed: {
@@ -60,34 +62,29 @@ const noticeSchema = new Schema({
     default: '',
   },
 
-  email: {
-    type: String,
-    match: regexp.email,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
   },
-  phone: {
-    type: String,
-  },
-  // owner: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'user',
-  // },
 });
 
 noticeSchema.post('save', handleSaveError);
 
 const addSchema = joi.object({
+  category: joi
+    .string()
+    .valid(...CATEGORIES)
+    .required()
+    .messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+      'string.empty': `{{#label}} cannot be an empty field`,
+      'string.trim': '{{#label}} must not have leading or trailing whitespace',
+      'any.required': `missing required field: {{#label}}`,
+    }),
   name: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
-    'any.required': `missing required field: {{#label}}`,
-  }),
-  email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
-    'string.email': `{{#label}} must be a valid email`,
-    'any.required': `missing required field: {{#label}}`,
-  }),
-  phone: joi.string().pattern(regexp.phone).required().messages({
-    'string.empty': `{{#label}} cannot be an empty field`,
-    'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
 });
