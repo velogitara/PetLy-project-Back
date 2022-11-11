@@ -48,11 +48,17 @@ GET http://localhost:3001/api/notices/categories/lostfound
 GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
 
 
+### ListUserNotices
+
+GET http://localhost:3001/api/notices/user/636e250a3fc8cdfd9b8f0cba
+content-type: application/json
+
+
 ### AddNotice
 
 POST http://localhost:3001/api/notices/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0NTU3YTIzYWM4M2Y3MmI0YWI4MSIsImlhdCI6MTY2ODE3MTE2NiwiZXhwIjoxNjY4MjE0MzY2fQ.3skVKR89UHwsFqWoQ6Ce3Dvol0eWmO6cosiLJ1yB5zo
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE3NzYwNSwiZXhwIjoxNjY4MjIwODA1fQ.Q6keHtsPSRvMM3MaSWa5XkJLG3n9Re3f1g0YXZ-vn2E
 
 {   
     "category": "goodhands",
@@ -62,9 +68,3 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0NTU3Y
     "location": "Dnipro",
     "sex": "male"
 }
-
-### GetUserNotices
-
-GET http://localhost:3001/api/users/notices
-content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU0NTU3YTIzYWM4M2Y3MmI0YWI4MSIsImlhdCI6MTY2ODE3MTE2NiwiZXhwIjoxNjY4MjE0MzY2fQ.3skVKR89UHwsFqWoQ6Ce3Dvol0eWmO6cosiLJ1yB5zo
