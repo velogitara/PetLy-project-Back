@@ -12,27 +12,18 @@ const newsSchema = new Schema(
       type: String,
       required: [true, 'Please, provide article for news'],
     },
-    data: {
-      type: String,
-      default: '00/00/0000',
-    },
   },
   { versionKey: false, timestamps: true }
 );
 newsSchema.post('save', handleSaveError);
 
-const joiSchema = Joi.object({
+const addNewsSchema = Joi.object({
   title: Joi.string().required(),
   article: Joi.string().required(),
-  data: Joi.string().required(),
 });
 
-// const favoriteSchema = Joi.object({
-//   favorite: Joi.bool().required(),
-// });
-
 const News = model('news', newsSchema);
-const schemas = { joiSchema };
+const schemas = { addNewsSchema };
 
 module.exports = {
   News,

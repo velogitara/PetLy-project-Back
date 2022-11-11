@@ -1,10 +1,8 @@
 const { News } = require('../../models/news');
 
-const getAll = async (req, res) => {
-  // const { _id: owner } = req.user;
-
+const listNews = async (req, res) => {
   const data = await News.find({}, '-createdAt -updatedAt');
   res.json({ data });
 };
 
-module.exports = getAll;
+module.exports = listNews;

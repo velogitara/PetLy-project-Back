@@ -1,7 +1,7 @@
-const getAll = require('./getAll');
-const add = require('./add');
+const listNews = require('./listNews');
+const addNews = require('./addNews');
 
 module.exports = {
-  getAll,
-  add,
+  listNews,
+  addNews,
 };

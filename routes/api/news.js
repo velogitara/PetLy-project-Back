@@ -9,8 +9,12 @@ const {
   ROUTES: { news },
 } = require('../constants');
 
-router.get(news.getAll, controllerWrapper(controller.getAll));
+router.get(news.getAll, controllerWrapper(controller.listNews));
 
-router.post(news.getAll, validateBody(schemas.joiSchema), controllerWrapper(controller.add));
+router.post(
+  news.getAll,
+  validateBody(schemas.addNewsSchema),
+  controllerWrapper(controller.addNews)
+);
 
 module.exports = router;
