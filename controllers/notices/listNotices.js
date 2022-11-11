@@ -9,7 +9,7 @@ const listNotices = async (req, res) => {
     limit,
   });
 
-  res.json(result);
+  res.json({ data: { notices: result } });
 };
 
 module.exports = listNotices;

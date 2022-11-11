@@ -9,7 +9,7 @@ const listNoticesByCategory = async (req, res) => {
     throw requestError(404, 'Not found');
   }
 
-  res.json(result);
+  res.json({ data: { [category]: result } });
 };
 
 module.exports = listNoticesByCategory;

@@ -9,8 +9,6 @@ const {
   ROUTES: { auth },
 } = require('../constants');
 
-// console.log(auth.signUp);
-
 // router.get('/', controllerWrapper(controller.getAllUsers));
 
 router.post(

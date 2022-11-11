@@ -9,7 +9,7 @@ const getNoticeById = async (req, res) => {
     throw requestError(404, 'Not found');
   }
 
-  res.json({ data: { token: result.token } });
+  res.json({ data: { notice: result } });
 };
 
 module.exports = getNoticeById;
