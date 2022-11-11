@@ -30,6 +30,7 @@ GET  http://localhost:3001/api/auth/logout/
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE2NjUxMSwiZXhwIjoxNjY4MjA5NzExfQ.W1zcPbT-yq26hhuXTpfrGX1g9drRe-ev4f3z62Q1Kzk
 
+
 ######### NOTICES ########
 
 ### ListNotices
@@ -47,11 +48,17 @@ GET http://localhost:3001/api/notices/categories/lostfound
 GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
 
 
+### ListUserNotices
+
+GET http://localhost:3001/api/notices/user/636e250a3fc8cdfd9b8f0cba
+content-type: application/json
+
+
 ### AddNotice
 
 POST http://localhost:3001/api/notices/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE2NjUxMSwiZXhwIjoxNjY4MjA5NzExfQ.W1zcPbT-yq26hhuXTpfrGX1g9drRe-ev4f3z62Q1Kzk
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE3NzYwNSwiZXhwIjoxNjY4MjIwODA1fQ.Q6keHtsPSRvMM3MaSWa5XkJLG3n9Re3f1g0YXZ-vn2E
 
 {   
     "category": "goodhands",

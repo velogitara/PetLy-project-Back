@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const { controllerWrapper } = require('../../helpers');
 const { users: ctrl } = require('../../controllers');
 const { upload, validateBody, authenticate } = require('../../middlewares');
@@ -12,7 +13,17 @@ const {
 } = require('../constants');
 
 router.get(users.currentUser, authenticate, controllerWrapper(ctrl.getCurrent));
-router.put(users.updateUser, authenticate, userValidationMiddleware, controllerWrapper(ctrl.updateUser));
-router.patch(users.updateUserAvatar, authenticate, upload.single("avatar"), controllerWrapper(ctrl.updateUserAvatar));
+router.put(
+  users.updateUser,
+  authenticate,
+  userValidationMiddleware,
+  controllerWrapper(ctrl.updateUser)
+);
+router.patch(
+  users.updateUserAvatar,
+  authenticate,
+  upload.single('avatar'),
+  controllerWrapper(ctrl.updateUserAvatar)
+);
 
 module.exports = router;

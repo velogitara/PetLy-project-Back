@@ -36,16 +36,6 @@ const userSchema = new Schema(
       default: '',
     },
 
-    myPets: {
-      type: Array,
-      default: [],
-    },
-
-    favorites: {
-      type: Array,
-      default: [],
-    },
-
     token: {
       type: String,
       default: null,

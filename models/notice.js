@@ -2,7 +2,6 @@
 const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
-// const { regexp } = require('../helpers');
 
 const CATEGORIES = ['lostfound', 'sell', 'goodhands'];
 const SEX = ['male', 'female'];
@@ -60,14 +59,14 @@ const noticeSchema = new Schema(
       default: '',
     },
 
-    comments: {
-      type: String,
-      default: '',
-    },
-
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
+    },
+
+    favorite: {
+      type: Array,
+      default: [],
     },
   },
   { versionKey: false, timestamps: true }
