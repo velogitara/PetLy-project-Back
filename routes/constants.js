@@ -4,12 +4,16 @@ const ROUTES = {
     signUp: '/register',
     signIn: '/login',
     signOut: '/logout',
-    currentUser: '/current',
     userVerify: '/verify/:verificationToken',
-    userUpdate: 'update',
+    userDelete: '/delete',
   },
   user: {
     baseRoute: '/api/users',
+    currentUser: '/current',
+    updateUser: '/updateUserInfo',
+    addPet: '/addPet',
+    removePet: '/removePet',
+    updatePet: '/updatePetInfo',
   },
   notices: {
     baseRoute: '/api/notices',
