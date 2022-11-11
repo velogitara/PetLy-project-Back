@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 const { handleSaveError } = require('../helpers');
+const format = require('date-format');
 
 const newsSchema = new Schema(
   {
@@ -14,6 +15,10 @@ const newsSchema = new Schema(
     description: {
       type: String,
       required: [true, 'Please, provide article for news'],
+    },
+    data: {
+      type: String,
+      default: () => format('dd/MM/yyyy', new Date()),
     },
   },
   { versionKey: false, timestamps: true }
