@@ -22,7 +22,7 @@ const ROUTES = {
     getByCategory: '/categories/:category',
     getById: '/:noticeId',
     addNotice: '/',
-    listUserNotices: '/user/:userId',
+    listUserNotices: '/user',
     updateFavorite: '/favorite/:noticeId',
     updateNotice: '/:noticeId',
     removeNotice: '/:noticeId',
