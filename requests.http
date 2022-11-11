@@ -53,6 +53,12 @@ content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NTk3MywiZXhwIjoxNjY4MjI5MTczfQ.4s9fVr1kMQZHfhnwTWb6oKfB_WrA042sP-GDSnqVYAM
 
 
+######### NEWS ########
+
+GET http://localhost:3001/api/news/
+
+
+
 ######### NOTICES ########
 
 ### ListNotices
@@ -72,7 +78,7 @@ GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
 
 ### ListUserNotices
 
-GET http://localhost:3001/api/notices/user/636e250a3fc8cdfd9b8f0cba?favorite
+GET http://localhost:3001/api/notices/user/636e7f0ffca95011bd01959d?favorite=true
 
 
 
