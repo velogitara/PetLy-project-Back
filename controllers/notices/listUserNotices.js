@@ -1,7 +1,7 @@
 const { Notice } = require('../../models');
 
 const listUserNotices = async (req, res) => {
-  const { userId: owner } = req.params;
+  const { _id: owner } = req.user;
   const { favorite } = req.query;
 
   const notices = await Notice.find(

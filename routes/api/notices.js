@@ -12,9 +12,9 @@ router.get(notices.getAll, controllerWrapper(controller.listNotices));
 
 router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCategory));
 
-router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
+router.get(notices.listUserNotices, authenticate, controllerWrapper(controller.listUserNotices));
 
-router.get(notices.listUserNotices, isValidId, controllerWrapper(controller.listUserNotices));
+router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
 router.post(
   notices.addNotice,

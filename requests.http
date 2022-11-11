@@ -78,7 +78,9 @@ GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
 
 ### ListUserNotices
 
-GET http://localhost:3001/api/notices/user/636e7f0ffca95011bd01959d?favorite=true
+GET http://localhost:3001/api/notices/user?favorite=true
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NjIyMiwiZXhwIjoxNjY4MjI5NDIyfQ.eGHP0R5I40mq2tNaWd6srKUskYlLTNpD-5JuNYs-PNI
 
 
 
