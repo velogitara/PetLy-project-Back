@@ -69,3 +69,5 @@ GET /api/auth/logout 10-11-2022_10:58:15
 GET /api/auth/logout 10-11-2022_10:59:02
 GET /api/auth/logout 10-11-2022_11:06:10
 POST /api/auth/login 11-11-2022_11:18:40
+GET /api/auth/logout 11-11-2022_11:31:04
+POST /api/auth/login 11-11-2022_11:31:10
