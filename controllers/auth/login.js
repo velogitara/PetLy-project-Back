@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../../models');
 const { requestError } = require('../../helpers');
 
-// const { TOKEN_EXPIRES_IN } = process.env;
+const { TOKEN_EXPIRES_IN } = process.env;
 
 const { SECRET_KEY } = process.env;
 
@@ -29,7 +29,7 @@ const logIn = async (req, res) => {
   const payload = {
     id: user._id,
   };
-  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '12h' });
+  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: TOKEN_EXPIRES_IN });
 
   // await isTokenExpired(user.token, SECRET_KEY, _id, User);
 
