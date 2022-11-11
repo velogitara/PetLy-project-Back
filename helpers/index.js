@@ -5,6 +5,7 @@ const handleSaveError = require('./handleSaveError');
 const hasher = require('./hasher');
 const sendEmail = require('./sendEmail');
 const createVerifyEmail = require('./createVerifyEmail');
+const isTokenExpired = require('./isTokenExpired');
 
 module.exports = {
   requestError,
@@ -14,4 +15,5 @@ module.exports = {
   hasher,
   sendEmail,
   createVerifyEmail,
+  isTokenExpired,
 };
