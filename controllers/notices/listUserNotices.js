@@ -5,7 +5,7 @@ const listUserNotices = async (req, res) => {
   const { favorite } = req.query;
 
   const notices = await Notice.find(
-    favorite ? { owner, favorite: { $in: [owner] } } : { owner },
+    favorite ? { favorite: owner } : { owner },
     '-createdAt -updatedAt'
   );
 
