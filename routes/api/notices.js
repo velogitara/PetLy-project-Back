@@ -12,15 +12,23 @@ router.get(notices.getAll, controllerWrapper(controller.listNotices));
 
 router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCategory));
 
-router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
+router.get(notices.listUserNotices, authenticate, controllerWrapper(controller.listUserNotices));
 
-router.get(notices.listUserNotices, isValidId, controllerWrapper(controller.listUserNotices));
+router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
 router.post(
   notices.addNotice,
   authenticate,
-  validateBody(schemas.addSchema),
+  validateBody(schemas.addNoticeSchema),
   controllerWrapper(controller.addNotice)
+);
+
+router.patch(
+  notices.updateFavorite,
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateFavoriteSchema),
+  controllerWrapper(controller.updateFavorite)
 );
 
 // router.put(
