@@ -10,7 +10,6 @@ const ROUTES = {
   users: {
     baseRoute: '/api/users',
     getCurrentUser: '/current',
-    getUserNotices: '/notices',
     updateUser: '/updateUserInfo',
     addPet: '/addPet',
     removePet: '/removePet',
@@ -22,6 +21,8 @@ const ROUTES = {
     getByCategory: '/categories/:category',
     getById: '/:noticeId',
     addNotice: '/',
+    listUserNotices: '/user/:userId',
+    updateFavorite: 'favorite/:userId',
     updateNotice: '/:noticeId',
     removeNotice: '/:noticeId',
   },

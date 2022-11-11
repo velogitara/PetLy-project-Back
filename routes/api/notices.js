@@ -14,6 +14,8 @@ router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCate
 
 router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
+router.get(notices.listUserNotices, isValidId, controllerWrapper(controller.listUserNotices));
+
 router.post(
   notices.addNotice,
   authenticate,
