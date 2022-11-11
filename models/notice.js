@@ -2,94 +2,124 @@
 const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
-const { regexp } = require('../helpers');
+// const { regexp } = require('../helpers');
 
-const noticeSchema = new Schema({
-  category: {
-    type: String,
-    required: [true, 'Set category for notice'],
-  },
-  title: {
-    type: String,
-    required: [true, 'Please, provide title for notice'],
-  },
+const CATEGORIES = ['lostfound', 'sell', 'goodhands'];
+const SEX = ['male', 'female'];
 
-  description: {
-    type: String,
-    required: [true, 'Please, provide description for notice'],
-  },
+const noticeSchema = new Schema(
+  {
+    category: {
+      type: String,
+      required: [true, 'Set category for notice'],
+    },
+    title: {
+      type: String,
+      required: [true, 'Set title for notice'],
+      unique: true,
+    },
 
-  name: {
-    type: String,
-    required: [true, 'Set name for pet'],
-  },
+    description: {
+      type: String,
+      required: [true, 'Set description for notice'],
+    },
 
-  birthday: {
-    type: Date,
-    default: '00.00.0000',
-  },
+    name: {
+      type: String,
+      required: [true, 'Set name for pet'],
+    },
 
-  breed: {
-    type: String,
-    default: 'outbred',
-  },
+    birthday: {
+      type: Date,
+      default: '0000',
+    },
 
-  location: {
-    type: String,
-    required: [true, 'Set location'],
-  },
+    breed: {
+      type: String,
+      default: 'outbred',
+    },
 
-  sex: {
-    type: String,
-    enum: ['male', 'femail'],
-    required: [true, 'Set sex'],
-  },
+    location: {
+      type: String,
+      required: [true, 'Set location'],
+    },
 
-  price: {
-    type: Number,
-    default: 0,
-  },
+    sex: {
+      type: String,
+      enum: ['male', 'female'],
+      required: [true, 'Set sex'],
+    },
 
-  imageURL: {
-    type: String,
-    default: '',
-  },
+    price: {
+      type: Number,
+      default: 0,
+    },
 
-  comments: {
-    type: String,
-    default: '',
-  },
+    imageURL: {
+      type: String,
+      default: '',
+    },
 
-  email: {
-    type: String,
-    match: regexp.email,
+    comments: {
+      type: String,
+      default: '',
+    },
+
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+    },
   },
-  phone: {
-    type: String,
-  },
-  // owner: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'user',
-  // },
-});
+  { versionKey: false, timestamps: true }
+);
 
 noticeSchema.post('save', handleSaveError);
 
 const addSchema = joi.object({
+  category: joi
+    .string()
+    .valid(...CATEGORIES)
+    .required()
+    .messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+      'string.empty': `{{#label}} cannot be an empty field`,
+      'string.trim': '{{#label}} must not have leading or trailing whitespace',
+      'any.required': `missing required field: {{#label}}`,
+    }),
+  title: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
+  description: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
   name: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
-  email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
-    'string.email': `{{#label}} must be a valid email`,
-    'any.required': `missing required field: {{#label}}`,
-  }),
-  phone: joi.string().pattern(regexp.phone).required().messages({
+  location: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
-    'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
+  sex: joi
+    .string()
+    .valid(...SEX)
+    .required()
+    .messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+      'string.empty': `{{#label}} cannot be an empty field`,
+      'string.trim': '{{#label}} must not have leading or trailing whitespace',
+      'any.required': `missing required field: {{#label}}`,
+    }),
 });
 
 const schemas = { addSchema };
