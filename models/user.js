@@ -65,14 +65,10 @@ const userSchema = new Schema(
 userSchema.post('save', handleSaveError);
 
 const registerSchema = joi.object({
-  name: joi
-    .string()
-    .regex(/^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/)
-    .required()
-    .messages({
-      'string.name': `{{#label}} must be a valid email`,
-      'any.required': `missing required field: {{#label}}`,
-    }),
+  name: joi.string().regex(regexp.name).required().messages({
+    'string.name': `{{#label}} must be a valid name`,
+    'any.required': `missing required field: {{#label}}`,
+  }),
   email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
     'string.email': `{{#label}} must be a valid email`,
     'any.required': `missing required field: {{#label}}`,
@@ -81,14 +77,10 @@ const registerSchema = joi.object({
     'string.empty': `{{#label}} cannot be an empty field`,
     'any.required': `missing required field: {{#label}}`,
   }),
-  phone: joi
-    .string()
-    .regex(/^\+?[1-9][0-9]{7,14}$/)
-    .required()
-    .messages({
-      'string.phone': `{{#label}} cannot be an empty field`,
-      'any.required': `missing required field: {{#label}}`,
-    }),
+  phone: joi.string().regex(regexp.phone).required().messages({
+    'string.phone': `{{#label}} cannot be an empty field`,
+    'any.required': `missing required field: {{#label}}`,
+  }),
 });
 
 const signInSchema = joi.object({
@@ -102,28 +94,23 @@ const signInSchema = joi.object({
   }),
 });
 
-// const updateSchema = joi
-//   .object({
-//     name: joi
-//       .string()
-//       .messages({
-//         'string.base': `{{#label}} should be a type of 'text'`,
-//         'string.empty': `{{#label}} cannot be an empty field`,
-//       }),
-//     email: joi
-//       .string()
-//       .email({ minDomainSegments: 2, maxDomainSegments: 4 })
-//       .messages({ 'string.email': `{{#label}} must be a valid email` }),
-//     phone: joi
-//       .string()
-//       .pattern(regexp.phone)
-//       .messages({
-//         'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
-//       }),
-//     favorite: joi.bool().messages({ 'bool.base': `{{#label}} should be a type of 'boolean'` }),
-//   })
-//   .min(1)
-//   .messages({ 'any.min': 'missing fields' });
+const updateSchema = joi
+  .object({
+    name: joi.string().messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+      'string.empty': `{{#label}} cannot be an empty field`,
+    }),
+    email: joi
+      .string()
+      .email({ minDomainSegments: 2, maxDomainSegments: 4 })
+      .messages({ 'string.email': `{{#label}} must be a valid email` }),
+    phone: joi.string().pattern(regexp.phone).messages({
+      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
+    }),
+    favorite: joi.bool().messages({ 'bool.base': `{{#label}} should be a type of 'boolean'` }),
+  })
+  .min(1)
+  .messages({ 'any.min': 'missing fields' });
 
 const resendVerifyEmailSchema = joi.object({
   email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
@@ -137,6 +124,7 @@ const User = model('user', userSchema);
 const userSchemas = {
   signInSchema,
   registerSchema,
+  updateSchema,
   resendVerifyEmailSchema,
 };
 

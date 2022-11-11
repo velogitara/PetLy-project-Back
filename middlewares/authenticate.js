@@ -1,5 +1,7 @@
 const { User } = require('../models/user');
 const jwt = require('jsonwebtoken');
+const { TokenExpiredError } = require('jsonwebtoken');
+
 const { requestError } = require('../helpers');
 const { SECRET_KEY } = process.env;
 
@@ -25,7 +27,9 @@ const authenticate = async (req, res, next) => {
       req.user = user;
       next();
     } catch (error) {
-      throw requestError(401, error.message);
+      if (error instanceof TokenExpiredError) {
+        throw requestError(401, error.message);
+      }
     }
   } catch (error) {
     next(error);
