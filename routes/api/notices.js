@@ -19,8 +19,16 @@ router.get(notices.listUserNotices, isValidId, controllerWrapper(controller.list
 router.post(
   notices.addNotice,
   authenticate,
-  validateBody(schemas.addSchema),
+  validateBody(schemas.addNoticeSchema),
   controllerWrapper(controller.addNotice)
+);
+
+router.patch(
+  notices.updateFavorite,
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateFavoriteSchema),
+  controllerWrapper(controller.updateFavorite)
 );
 
 // router.put(

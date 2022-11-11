@@ -74,7 +74,7 @@ const noticeSchema = new Schema(
 
 noticeSchema.post('save', handleSaveError);
 
-const addSchema = joi.object({
+const addNoticeSchema = joi.object({
   category: joi
     .string()
     .valid(...CATEGORIES)
@@ -121,7 +121,14 @@ const addSchema = joi.object({
     }),
 });
 
-const schemas = { addSchema };
+const updateFavoriteSchema = joi.object({
+  favorite: joi.bool().required().messages({
+    'bool.base': `{{#label}} should be a type of 'boolean'`,
+    'any.required': `missing required field: {{#label}}`,
+  }),
+});
+
+const schemas = { addNoticeSchema, updateFavoriteSchema };
 const Notice = model('notice', noticeSchema);
 
 module.exports = { Notice, schemas };
