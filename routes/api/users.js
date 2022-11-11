@@ -12,7 +12,7 @@ const {
   ROUTES: { users },
 } = require('../constants');
 
-router.get(users.currentUser, authenticate, controllerWrapper(ctrl.getCurrent));
+router.get(users.getCurrentUser, authenticate, controllerWrapper(ctrl.getCurrent));
 router.put(
   users.updateUser,
   authenticate,
