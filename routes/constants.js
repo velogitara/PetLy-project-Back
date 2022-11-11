@@ -11,6 +11,7 @@ const ROUTES = {
     baseRoute: '/api/users',
     getCurrentUser: '/current',
     updateUser: '/updateUserInfo',
+    updateUserAvatar: '/updateUserAvatar',
     addPet: '/addPet',
     removePet: '/removePet',
     updatePet: '/updatePetInfo',
