@@ -8,7 +8,7 @@ const { ROUTES } = require('./routes/constants');
 
 // const authRouter = require('./routes/api/auth');
 const noticesRouter = require('./routes/api/notices');
-// const newsRouter = require('./routes/api/news');
+const newsRouter = require('./routes/api/news');
 // const servicesRouter = require('./routes/api/services');
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(ROUTES.auth.baseRoute, authRouter);
 app.use(ROUTES.notices.baseRoute, noticesRouter);
-// app.use(ROUTES.news.baseRoute, newsRouter);
+app.use(ROUTES.news.baseRoute, newsRouter);
 // app.use(ROUTES.services.baseRoute, servicesRouter);
 
 app.use((req, res) => {
