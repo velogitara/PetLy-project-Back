@@ -3,5 +3,5 @@ const users = require('./users');
 
 module.exports = {
   auth,
-  users
+  users,
 };
