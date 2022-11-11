@@ -7,7 +7,7 @@ const ROUTES = {
     userVerify: '/verify/:verificationToken',
     userDelete: '/delete',
   },
-  user: {
+  users: {
     baseRoute: '/api/users',
     currentUser: '/current',
     updateUser: '/updateUserInfo',
