@@ -2,7 +2,6 @@
 const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
-// const { regexp } = require('../helpers');
 
 const CATEGORIES = ['lostfound', 'sell', 'goodhands'];
 const SEX = ['male', 'female'];
@@ -56,11 +55,6 @@ const noticeSchema = new Schema(
     },
 
     imageURL: {
-      type: String,
-      default: '',
-    },
-
-    comments: {
       type: String,
       default: '',
     },

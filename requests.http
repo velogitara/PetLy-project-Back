@@ -30,6 +30,7 @@ GET  http://localhost:3001/api/auth/logout/
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE2NjUxMSwiZXhwIjoxNjY4MjA5NzExfQ.W1zcPbT-yq26hhuXTpfrGX1g9drRe-ev4f3z62Q1Kzk
 
+
 ######### NOTICES ########
 
 ### ListNotices
