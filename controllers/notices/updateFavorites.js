@@ -1,6 +1,6 @@
 const { Notice } = require('../../models');
 
-const updateFavorite = async (req, res) => {
+const updateFavorites = async (req, res) => {
   const { _id } = req.user;
   const { favorite } = req.body;
   const { noticeId } = req.params;
@@ -10,4 +10,4 @@ const updateFavorite = async (req, res) => {
   res.json({ message: `Successfuly: ${favorite ? 'add to' : 'removed from'} Favorites` });
 };
 
-module.exports = updateFavorite;
+module.exports = updateFavorites;

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { controllerWrapper } = require('../../helpers');
 const controller = require('../../controllers/notices');
-const { authenticate, validateBody, isValidId } = require('../../middlewares');
+const { authenticate, validateBody, isValidId, upload } = require('../../middlewares');
 const { schemas } = require('../../models/notice');
 const {
   ROUTES: { notices },
@@ -19,12 +19,13 @@ router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeByI
 router.post(
   notices.addNotice,
   authenticate,
+  upload.single('image'),
   validateBody(schemas.addNoticeSchema),
   controllerWrapper(controller.addNotice)
 );
 
 router.patch(
-  notices.updateFavorite,
+  notices.updateFavorites,
   authenticate,
   isValidId,
   validateBody(schemas.updateFavoriteSchema),
@@ -38,6 +39,11 @@ router.patch(
 //   controllerWrapper(controller.updateNotice)
 // );
 
-// router.delete(notices.removeNotice, isValidId, controllerWrapper(controller.removeContact));
+router.delete(
+  notices.removeNotice,
+  authenticate,
+  isValidId,
+  controllerWrapper(controller.removeNotice)
+);
 
 module.exports = router;
