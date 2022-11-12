@@ -1,7 +1,7 @@
 // const fs = require('fs/promises')
 const { Schema, model } = require('mongoose');
 const joi = require('joi');
-const { handleSaveError, regexp } = require('../helpers');
+const { handleSaveError } = require('../helpers');
 
 const petSchema = new Schema(
   {
@@ -49,7 +49,6 @@ const addPetSchema = joi.object({
   }),
   birthday: joi.date().required().messages({
     'string.base': `{{#label}} must be a valid date`,
-    'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: dd.mm.yyyy`,
     'any.required': `missing required field: {{#label}}`,
   }),
   breed: joi.string().required().messages({
@@ -69,9 +68,8 @@ const updatePetSchema = joi
       'string.base': `{{#label}} should be a type of 'text'`,
       'string.empty': `{{#label}} cannot be an empty field`,
     }),
-    birthday: joi.string().pattern(regexp.birthDate).messages({
+    birthday: joi.date().messages({
       'string.base': `{{#label}} must be a valid date`,
-      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: dd.mm.yyyy`,
     }),
     breed: joi.string().messages({
       'string.base': `{{#label}} should be a type of 'text'`,
