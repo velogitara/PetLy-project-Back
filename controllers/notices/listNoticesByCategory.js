@@ -3,6 +3,7 @@ const { requestError } = require('../../helpers');
 
 const listNoticesByCategory = async (req, res) => {
   const { category } = req.params;
+
   const result = await Notice.find({ category }, '-createdAt -updatedAt');
 
   if (!result) {

@@ -1,14 +1,9 @@
-// endpoint for edit cardPet
-// endpoint for add cartPet
-// endpoint for remove cartPet
-// model userPet
-
 const { Pet } = require('../../models');
 
 const getCurrent = async (req, res) => {
-  const { _id: owner, name, email, birthday, phone, location, createdAt } = req.user;
+  const { _id, name, email, birthday, phone, location, createdAt } = req.user;
 
-  // const userPets = Pet.find(owner, '',).populate('pets','')
+  const pets = await Pet.find({ owner: _id }, '-createdAt -updatedAt');
 
   res.json({
     data: {
@@ -20,6 +15,7 @@ const getCurrent = async (req, res) => {
         location,
         created: createdAt,
       },
+      pets,
     },
   });
 };
