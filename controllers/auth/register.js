@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const { nanoid } = require('nanoid');
 
 const { requestError } = require('../../helpers');
 const { User } = require('../../models');
@@ -12,25 +11,16 @@ const register = async (req, res) => {
   }
 
   const hashPassword = await bcrypt.hash(password, 10);
-  const verificationToken = nanoid();
+
   const result = await User.create({
     name,
     email,
     password: hashPassword,
     phone,
-    verificationToken,
   });
+  const userId = await User.findOne({ email });
 
-  res.status(201).json({
-    data: {
-      user: {
-        name: result.name,
-        email: result.email,
-        verificationToken,
-        phone,
-      },
-    },
-  });
+  res.status(201).json({ data: { token: result.token } });
 };
 
 module.exports = register;
