@@ -11,6 +11,7 @@ const userSchema = new Schema(
       required: [true, 'Email is required'],
       unique: true,
     },
+
     password: {
       type: String,
       required: [true, 'Password is required'],
@@ -19,27 +20,34 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Name is required'],
     },
+
     avatarURL: { type: String, default: '' },
+
     location: {
       type: String,
       default: 'planet Earth',
     },
+
     phone: {
       type: String,
       required: [true, 'Phone is required'],
     },
+
     birthday: {
       type: Date,
       default: null,
     },
+
     token: {
       type: String,
       default: null,
     },
+
     verify: {
       type: Boolean,
       default: false,
     },
+
     verificationToken: {
       type: String,
       default: '',
