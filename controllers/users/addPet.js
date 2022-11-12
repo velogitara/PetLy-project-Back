@@ -30,8 +30,9 @@ module.exports = addPet;
 
 // async function addPet(req, res, next) {
 //   const { _id } = req.user;
-//   const { body, file } = req;
-//   console.log(req);
+//   const { file } = req;
+//   const payload = JSON.parse(req.body.data);
+//   console.log(payload);
 
 //   if (!body && !file) {
 //     throw requestError(400, 'Missing fields');
