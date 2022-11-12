@@ -10,6 +10,7 @@ const userSchema = new Schema(
       match: regexp.email,
       required: [true, 'Email is required'],
       unique: true,
+      lowercase: true,
     },
     password: {
       type: String,
@@ -40,14 +41,14 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-    verify: {
-      type: Boolean,
-      default: false,
-    },
-    verificationToken: {
-      type: String,
-      default: '',
-    },
+    // verify: {
+    //   type: Boolean,
+    //   default: false,
+    // },
+    // verificationToken: {
+    //   type: String,
+    //   default: '',
+    // },
   },
   { versionKey: false, timestamps: true }
 );
