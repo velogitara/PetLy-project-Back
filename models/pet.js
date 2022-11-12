@@ -12,13 +12,12 @@ const petSchema = new Schema(
     },
 
     birthday: {
-      type: String,
-      match: regexp.birthDate,
+      type: Date,
       required: [true, 'Set date of birth for pet'],
     },
 
     breed: {
-      type: String,
+      type: Date,
       required: [true, 'Set breed for pet'],
     },
 
@@ -48,7 +47,7 @@ const addPetSchema = joi.object({
     'string.empty': `{{#label}} cannot be an empty field`,
     'any.required': `missing required field: {{#label}}`,
   }),
-  birthday: joi.string().pattern(regexp.birthDate).required().messages({
+  birthday: joi.date().required().messages({
     'string.base': `{{#label}} must be a valid date`,
     'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: dd.mm.yyyy`,
     'any.required': `missing required field: {{#label}}`,
