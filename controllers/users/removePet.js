@@ -11,7 +11,7 @@ async function removePet(req, res) {
   }
 
   res.json({
-    message: 'Contact deleted',
+    message: 'Pet deleted succesfully!',
   });
 }
 
