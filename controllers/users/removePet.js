@@ -11,9 +11,7 @@ async function removePet(req, res) {
   }
 
   res.json({
-    data: {
-      pet,
-    },
+    message: 'Contact deleted',
   });
 }
 
