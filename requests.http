@@ -68,20 +68,19 @@ GET http://localhost:3001/api/notices/
 
 ### ListNoticesByCategory
 
-GET http://localhost:3001/api/notices/categories/goodhands
+GET http://localhost:3001/api/notices/categories/in_good_hands
 
 
 ### GetNotiseById
 
-GET http://localhost:3001/api/notices/636b84c036eeb1ed7a216b8f
+GET http://localhost:3001/api/notices/636e5eec9f570f1a04a2fd28
 
 
 ### ListUserNotices
 
 GET http://localhost:3001/api/notices/user?favorite=true
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NjIyMiwiZXhwIjoxNjY4MjI5NDIyfQ.eGHP0R5I40mq2tNaWd6srKUskYlLTNpD-5JuNYs-PNI
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
 
 
 
@@ -92,7 +91,7 @@ content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE4MjU4MCwiZXhwIjoxNjY4MjI1NzgwfQ.KeUGSmSKRPANloOjkOJUz5LV64R-M_m7n0i3KLPJf8I
 
 {   
-    "category": "goodhands",
+    "category": "in_good_hands",
     "title": "Cute cat looking for a good friend",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
@@ -100,32 +99,48 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
     "sex": "male"
 }
 
-#######NEWS###########
-
-###listNews#####
-GET http://localhost:3001/api/news
 ###
 
 POST http://localhost:3001/api/notices/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NjIyMiwiZXhwIjoxNjY4MjI5NDIyfQ.eGHP0R5I40mq2tNaWd6srKUskYlLTNpD-5JuNYs-PNI
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
 {   
-    "category": "goodhands",
+    "category": "lost_found",
     "title": "Cute dog looking for a good friend",
-    "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
+    "description": "Very nice and polite dog hopes to find home and loving family to become a part of",
     "name": "Nora",
     "location": "Lviv",
     "sex": "female"
 }
 
+###
 
-### UpdateFavorite
+POST http://localhost:3001/api/notices/
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
 
-PATCH http://localhost:3001/api/notices/favorite/636e5eec9f570f1a04a2fd28
+{   
+    "category": "sell",
+    "title": "Cute bird looking for a good friend",
+    "description": "Very nice and polite bird hopes to find home and loving family to become a part of",
+    "name": "Patty",
+    "location": "Kyiv",
+    "sex": "male",
+    "price": 100
+}
+
+
+### UpdateFavorites
+
+PATCH http://localhost:3001/api/notices/favorites/636e5eec9f570f1a04a2fd28
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NTk3MywiZXhwIjoxNjY4MjI5MTczfQ.4s9fVr1kMQZHfhnwTWb6oKfB_WrA042sP-GDSnqVYAM
 
 {   
     "favorite": true
 }
+
+### RemoveNotice
+
+DELETE http://localhost:3001/api/notices/636fc19461d63ad551ac0cf4
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4

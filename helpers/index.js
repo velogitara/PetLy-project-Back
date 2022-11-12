@@ -6,6 +6,7 @@ const hasher = require('./hasher');
 const sendEmail = require('./sendEmail');
 const createVerifyEmail = require('./createVerifyEmail');
 const isTokenExpired = require('./isTokenExpired');
+const imageUploader = require('./imageUploader');
 
 module.exports = {
   requestError,
@@ -16,4 +17,5 @@ module.exports = {
   sendEmail,
   createVerifyEmail,
   isTokenExpired,
+  imageUploader,
 };

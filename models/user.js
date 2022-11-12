@@ -19,7 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Name is required'],
     },
-    avatarURL: { type: String, default: '' },
+    avatarURL: { type: Object, default: {} },
 
     location: {
       type: String,
