@@ -22,8 +22,8 @@ const petSchema = new Schema(
     },
 
     imageUrl: {
-      type: String,
-      default: '',
+      type: Object,
+      default: {},
     },
 
     comments: {
