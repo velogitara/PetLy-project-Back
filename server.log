@@ -186,3 +186,12 @@ GET /api/notices/user?favorite=true 11-11-2022_10:52:30
 GET /api/notices/user?favorite=false 11-11-2022_10:52:39
 GET /api/notices/user?favorite 11-11-2022_10:52:53
 GET /api/notices/user?favorite=true 11-11-2022_10:53:56
+GET /api/notices/636e5eec9f570f1a04a2fd28 11-11-2022_10:55:08
+GET /api/notices/categories/goodhands 11-11-2022_10:55:26
+POST /api/auth/register/ 12-11-2022_11:21:01
+GET /api/news/ 12-11-2022_11:21:18
+GET /api/notices/ 12-11-2022_11:21:26
+POST /api/auth/login/ 12-11-2022_11:24:20
+GET /api/notices/ 12-11-2022_11:24:33
+GET /api/notices/categories/in_good_hands 12-11-2022_11:24:45
+GET /api/notices/categories/in_good_hands 12-11-2022_11:25:16

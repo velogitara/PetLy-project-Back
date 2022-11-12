@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
 
-const CATEGORIES = ['lostfound', 'sell', 'goodhands'];
+const CATEGORIES = ['lost_found', 'sell', 'in_good_hands'];
 const SEX = ['male', 'female'];
 
 const noticeSchema = new Schema(
@@ -45,13 +45,13 @@ const noticeSchema = new Schema(
 
     sex: {
       type: String,
-      enum: ['male', 'female'],
+      enum: SEX,
       required: [true, 'Set sex'],
     },
 
     price: {
       type: Number,
-      default: 0,
+      default: null,
     },
 
     imageURL: {
