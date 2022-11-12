@@ -22,11 +22,17 @@ router.put(users.updateUser, authenticate, userValidation, controllerWrapper(ctr
 router.patch(
   users.updateUserAvatar,
   authenticate,
-  upload.single('avatar'),
+  upload.single('image'),
   controllerWrapper(ctrl.updateUserAvatar)
 );
 
-router.post(users.addPet, authenticate, petValidtion, controllerWrapper(ctrl.addPet));
+router.post(
+  users.addPet,
+  authenticate,
+  upload.single('image'),
+  petValidtion,
+  controllerWrapper(ctrl.addPet)
+);
 
 router.put(users.updatePet, authenticate, updatePetValidation, controllerWrapper(ctrl.updatePet));
 
