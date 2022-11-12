@@ -20,22 +20,19 @@ const userSchema = new Schema(
       required: [true, 'Name is required'],
     },
     avatarURL: { type: String, default: '' },
-
     location: {
       type: String,
       default: 'planet Earth',
     },
-
     phone: {
       type: String,
       required: [true, 'Phone is required'],
     },
-
     birthday: {
-      type: Date,
+      type: String,
+      match: regexp.birthDate,
       default: '',
     },
-
     token: {
       type: String,
       default: null,
@@ -96,8 +93,9 @@ const updateSchema = joi
     phone: joi.string().pattern(regexp.phone).messages({
       'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
     }),
-    birthday: joi.date().messages({
-      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: YYYY-MM-DD`,
+    birthday: joi.string().pattern(regexp.birthDate).messages({
+      'string.base': `{{#label}} must be a valid date`,
+      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: dd.mm.yyyy`,
     }),
     location: joi.string().messages({
       'string.base': `{{#label}} should be a type of 'text'`,

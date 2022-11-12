@@ -13,8 +13,8 @@ const ROUTES = {
     updateUser: '/updateUserInfo',
     updateUserAvatar: '/updateUserAvatar',
     addPet: '/addPet',
-    removePet: '/removePet',
-    updatePet: '/updatePetInfo',
+    removePet: '/removePet/:petId',
+    updatePet: '/updatePetInfo/:petId',
   },
   notices: {
     baseRoute: '/api/notices',
