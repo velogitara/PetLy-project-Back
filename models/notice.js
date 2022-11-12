@@ -56,7 +56,7 @@ const noticeSchema = new Schema(
 
     imageURL: {
       type: Object,
-      default: {},
+      default: null /* default should be null */,
     },
 
     owner: {

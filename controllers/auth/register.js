@@ -18,9 +18,14 @@ const register = async (req, res) => {
     password: hashPassword,
     phone,
   });
-  const userId = await User.findOne({ email });
+  // const userId = await User.findOne({ email });
 
-  res.status(201).json({ data: { token: result.token } });
+  res.status(201).json({
+    data: {
+      result,
+      // token: result.token,
+    },
+  });
 };
 
 module.exports = register;

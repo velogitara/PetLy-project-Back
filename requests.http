@@ -88,7 +88,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 
 POST http://localhost:3001/api/notices/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODE4MjU4MCwiZXhwIjoxNjY4MjI1NzgwfQ.KeUGSmSKRPANloOjkOJUz5LV64R-M_m7n0i3KLPJf8I
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODI5Mjk3NSwiZXhwIjoxNjY4MzM2MTc1fQ.yRjDZRPIpId_iXTFPAa8-sxa4U7nDzM06X8EuXbTkaQ
 
 {   
     "category": "in_good_hands",

@@ -20,7 +20,7 @@ router.get(users.getCurrentUser, authenticate, controllerWrapper(controller.getC
 router.put(
   users.updateUser,
   authenticate,
-  userValidationMiddleware,
+  userValidation /* here was wrong name userValidationMiddlware */,
   controllerWrapper(controller.updateUser)
 );
 router.patch(
