@@ -9,7 +9,7 @@ const ROUTES = {
   },
   users: {
     baseRoute: '/api/users',
-    getCurrentUser: '/current',
+    getCurrentUser: '/',
     updateUser: '/updateUserInfo',
     updateUserAvatar: '/updateUserAvatar',
     addPet: '/addPet',
