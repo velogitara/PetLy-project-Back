@@ -9,15 +9,12 @@ const ROUTES = {
   },
   users: {
     baseRoute: '/api/users',
-    getCurrentUser: '/current',
-    updateUser: '/',
-    updateUserAvatar: '/avatar',
-  },
-  pets: {
-    baseRoute: '/api/pets',
-    addPet: '/',
-    removePet: '/:petId',
-    updatePet: '/:petId',
+    getCurrentUser: '/',
+    updateUser: '/updateUserInfo',
+    updateUserAvatar: '/updateUserAvatar',
+    addPet: '/addPet',
+    removePet: '/removePet/:petId',
+    updatePet: '/updatePetInfo/:petId',
   },
   notices: {
     baseRoute: '/api/notices',
