@@ -10,10 +10,14 @@ const ROUTES = {
   users: {
     baseRoute: '/api/users',
     getCurrentUser: '/current',
-    updateUser: '/updateUserInfo',
-    addPet: '/addPet',
-    removePet: '/removePet',
-    updatePet: '/updatePetInfo',
+    updateUser: '/',
+    updateUserAvatar: '/avatar',
+  },
+  pets: {
+    baseRoute: '/api/pets',
+    addPet: '/',
+    removePet: '/:petId',
+    updatePet: '/:petId',
   },
   notices: {
     baseRoute: '/api/notices',
@@ -22,7 +26,7 @@ const ROUTES = {
     getById: '/:noticeId',
     addNotice: '/',
     listUserNotices: '/user',
-    updateFavorite: '/favorite/:noticeId',
+    updateFavorites: '/favorites/:noticeId',
     updateNotice: '/:noticeId',
     removeNotice: '/:noticeId',
   },

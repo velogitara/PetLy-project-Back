@@ -4,7 +4,6 @@ const { requestError } = require('../helpers');
 
 const isValidId = (req, res, next) => {
   const [Id] = Object.values(req.params);
-  console.log(Id);
   const result = isValidObjectId(Id);
 
   if (!result) {

@@ -55,8 +55,8 @@ const noticeSchema = new Schema(
     },
 
     imageURL: {
-      type: String,
-      default: '',
+      type: Object,
+      default: {},
     },
 
     owner: {
@@ -103,6 +103,11 @@ const addNoticeSchema = joi.object({
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
+  breed: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+  }),
   location: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
@@ -119,6 +124,9 @@ const addNoticeSchema = joi.object({
       'string.trim': '{{#label}} must not have leading or trailing whitespace',
       'any.required': `missing required field: {{#label}}`,
     }),
+  price: joi.number().messages({
+    'number.base': `{{#label}} should be a type of 'number'`,
+  }),
 });
 
 const updateFavoriteSchema = joi.object({
