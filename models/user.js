@@ -11,14 +11,17 @@ const userSchema = new Schema(
       required: [true, 'Email is required'],
       unique: true,
     },
+
     password: {
       type: String,
       required: [true, 'Password is required'],
     },
+
     name: {
       type: String,
       required: [true, 'Name is required'],
     },
+
     avatarURL: { type: Object, default: {} },
 
     location: {
@@ -33,17 +36,19 @@ const userSchema = new Schema(
 
     birthday: {
       type: Date,
-      default: '',
+      default: null,
     },
 
     token: {
       type: String,
       default: null,
     },
+
     verify: {
       type: Boolean,
       default: false,
     },
+
     verificationToken: {
       type: String,
       default: '',
@@ -97,7 +102,8 @@ const updateSchema = joi
       'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
     }),
     birthday: joi.date().messages({
-      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: YYYY-MM-DD`,
+      'string.base': `{{#label}} must be a valid date`,
+      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
     }),
     location: joi.string().messages({
       'string.base': `{{#label}} should be a type of 'text'`,
