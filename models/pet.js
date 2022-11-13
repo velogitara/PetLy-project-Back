@@ -17,13 +17,13 @@ const petSchema = new Schema(
     },
 
     breed: {
-      type: Date,
-      required: [true, 'Set breed for pet'],
+      type: String,
+      default: 'outbred',
     },
 
-    imageUrl: {
+    imageURL: {
       type: Object,
-      default: {},
+      default: null,
     },
 
     comments: {
@@ -51,10 +51,9 @@ const addPetSchema = joi.object({
     'string.base': `{{#label}} must be a valid date`,
     'any.required': `missing required field: {{#label}}`,
   }),
-  breed: joi.string().required().messages({
+  breed: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
-    'any.required': `missing required field: {{#label}}`,
   }),
   comments: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
@@ -62,26 +61,24 @@ const addPetSchema = joi.object({
   }),
 });
 
-const updatePetSchema = joi
-  .object({
-    name: joi.string().messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-      'string.empty': `{{#label}} cannot be an empty field`,
-    }),
-    birthday: joi.date().messages({
-      'string.base': `{{#label}} must be a valid date`,
-    }),
-    breed: joi.string().messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-      'string.empty': `{{#label}} cannot be an empty field`,
-    }),
-    comments: joi.string().messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-      'string.empty': `{{#label}} cannot be an empty field`,
-    }),
-  })
-  .min(1)
-  .messages({ 'any.min': 'missing fields' });
+const updatePetSchema = joi.object({
+  name: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+  }),
+  birthday: joi.date().messages({
+    'string.base': `{{#label}} must be a valid date`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+  }),
+  breed: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+  }),
+  comments: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+  }),
+});
 
 const petSchemas = { addPetSchema, updatePetSchema };
 const Pet = model('pet', petSchema);

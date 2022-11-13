@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { controllerWrapper } = require('../../helpers');
 const controller = require('../../controllers/users');
-const { upload, validateBody, authenticate } = require('../../middlewares');
+const { upload, validateBody, authenticate, isValidId } = require('../../middlewares');
 const { userSchemas } = require('../../models/user');
 const { petSchemas } = require('../../models/pet');
 
@@ -17,17 +17,12 @@ const {
 
 router.get(users.getCurrentUser, authenticate, controllerWrapper(controller.getCurrent));
 
-router.put(
+router.patch(
   users.updateUser,
   authenticate,
-  userValidation /* here was wrong name userValidationMiddlware */,
+  upload.single('image'),
+  userValidation,
   controllerWrapper(controller.updateUser)
-);
-router.patch(
-  users.updateUserAvatar,
-  authenticate,
-  upload.single('avatar'),
-  controllerWrapper(controller.updateUserAvatar)
 );
 
 router.post(
@@ -41,10 +36,12 @@ router.post(
 router.put(
   users.updatePet,
   authenticate,
+  isValidId,
+  upload.single('image'),
   updatePetValidation,
   controllerWrapper(controller.updatePet)
 );
 
-router.delete(users.removePet, authenticate, controllerWrapper(controller.removePet));
+router.delete(users.removePet, authenticate, isValidId, controllerWrapper(controller.removePet));
 
 module.exports = router;
