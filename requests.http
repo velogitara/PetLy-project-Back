@@ -50,7 +50,7 @@ content-type: application/json
 
 GET  http://localhost:3001/api/auth/logout/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NTk3MywiZXhwIjoxNjY4MjI5MTczfQ.4s9fVr1kMQZHfhnwTWb6oKfB_WrA042sP-GDSnqVYAM
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODM0NTcyMCwiZXhwIjoxNjY4Mzg4OTIwfQ.JGeAjcS0VR6Olc3nsZ5bQdHOx7O7lCfsL8deIToSw-0
 
 
 ######### NEWS ########
@@ -73,7 +73,7 @@ GET http://localhost:3001/api/notices/categories/in_good_hands
 
 ### GetNotiseById
 
-GET http://localhost:3001/api/notices/636e5eec9f570f1a04a2fd28
+GET http://localhost:3001/api/notices/6370f09bed87c236bfd478aa
 
 
 ### ListUserNotices
@@ -87,10 +87,13 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 ### AddNotice
 
 POST http://localhost:3001/api/notices/
-content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODI5Mjk3NSwiZXhwIjoxNjY4MzM2MTc1fQ.yRjDZRPIpId_iXTFPAa8-sxa4U7nDzM06X8EuXbTkaQ
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODM0MzkwMCwiZXhwIjoxNjY4Mzg3MTAwfQ.JooGTW-39tXoXI1pvNiqNXzV0vmNDXiervCMJqPg4v8
 
-{   
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{  
     "category": "in_good_hands",
     "title": "Cute cat looking for a good friend",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
@@ -99,11 +102,22 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
     "sex": "male"
 }
 
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/png
+
+< ../temp/cat.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
 ###
 
 POST http://localhost:3001/api/notices/
-content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
 {   
     "category": "lost_found",
     "title": "Cute dog looking for a good friend",
@@ -113,11 +127,21 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
     "sex": "female"
 }
 
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/png
+
+< ../temp/dog.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
 ###
 
 POST http://localhost:3001/api/notices/
-content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
 
 {   
     "category": "sell",
@@ -128,6 +152,13 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
     "sex": "male",
     "price": 100
 }
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/png
+
+< ../temp/bird.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 
 ### UpdateFavorites
@@ -142,5 +173,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 
 ### RemoveNotice
 
-DELETE http://localhost:3001/api/notices/636fc19461d63ad551ac0cf4
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
+DELETE http://localhost:3001/api/notices/63710ae2f8a72f6a54f39804
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
