@@ -21,6 +21,7 @@ const ROUTES = {
     getAll: '/',
     getByCategory: '/categories/:category',
     getById: '/:noticeId',
+    getByQuery: '/search/:query',
     addNotice: '/',
     listUserNotices: '/user',
     updateFavorites: '/favorites/:noticeId',

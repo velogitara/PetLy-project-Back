@@ -8,7 +8,7 @@ const { userSchemas } = require('../../models/user');
 const { petSchemas } = require('../../models/pet');
 
 const userValidation = validateBody(userSchemas.updateSchema);
-const petValidtion = validateBody(petSchemas.addPetSchema);
+const petValidation = validateBody(petSchemas.addPetSchema);
 const updatePetValidation = validateBody(petSchemas.updatePetSchema);
 
 const {
@@ -16,10 +16,11 @@ const {
 } = require('../constants');
 
 router.get(users.getCurrentUser, authenticate, controllerWrapper(controller.getCurrent));
+
 router.put(
   users.updateUser,
   authenticate,
-  userValidationMiddleware,
+  userValidation /* here was wrong name userValidationMiddlware */,
   controllerWrapper(controller.updateUser)
 );
 router.patch(
@@ -33,12 +34,17 @@ router.post(
   users.addPet,
   authenticate,
   upload.single('image'),
-  petValidtion,
-  controllerWrapper(ctrl.addPet)
+  petValidation,
+  controllerWrapper(controller.addPet)
 );
 
-router.put(users.updatePet, authenticate, updatePetValidation, controllerWrapper(ctrl.updatePet));
+router.put(
+  users.updatePet,
+  authenticate,
+  updatePetValidation,
+  controllerWrapper(controller.updatePet)
+);
 
-router.delete(users.removePet, authenticate, controllerWrapper(ctrl.removePet));
+router.delete(users.removePet, authenticate, controllerWrapper(controller.removePet));
 
 module.exports = router;

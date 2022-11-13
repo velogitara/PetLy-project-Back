@@ -16,6 +16,8 @@ router.get(notices.listUserNotices, authenticate, controllerWrapper(controller.l
 
 router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
+router.get(notices.getByQuery, controllerWrapper(controller.getNoticeByQuery));
+
 router.post(
   notices.addNotice,
   authenticate,
