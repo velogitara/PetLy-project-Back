@@ -2,7 +2,7 @@ const { Pet } = require('../../models');
 const { requestError, imageUploader } = require('../../helpers');
 
 async function updatePet(req, res) {
-  const { body, file } = req;
+  const { user, body, file } = req;
   const { petId } = req.params;
 
   if (!body) {
@@ -15,14 +15,22 @@ async function updatePet(req, res) {
   let pet = null;
 
   if (!file) {
-    pet = await Pet.findByIdAndUpdate({ _id: petId }, payload, {
-      new: true,
-      fields,
-    });
+    pet = await Pet.findOneAndUpdate(
+      {
+        $and: [{ _id: petId }, { owner: user._id }],
+      },
+      payload,
+      {
+        new: true,
+        fields,
+      }
+    );
   } else {
     const imageURL = await imageUploader('pets', file, petId);
-    pet = await Pet.findByIdAndUpdate(
-      { _id: petId },
+    pet = await Pet.findOneAndUpdate(
+      {
+        $and: [{ _id: petId }, { owner: user._id }],
+      },
       { ...payload, imageURL },
       { new: true, fields }
     );
