@@ -2,11 +2,16 @@ const { Notice } = require('../../models');
 
 const listUserNotices = async (req, res) => {
   const { _id: owner } = req.user;
-  const { favorite } = req.query;
+  const { page = 1, limit = 8, favorite } = req.query;
+  const skip = (page - 1) * limit;
 
   const notices = await Notice.find(
     favorite ? { favorite: owner } : { owner },
-    '-createdAt -updatedAt'
+    '-createdAt -updatedAt',
+    {
+      skip,
+      limit,
+    }
   );
 
   res.json({
