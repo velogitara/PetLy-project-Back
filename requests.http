@@ -59,6 +59,9 @@ GET http://localhost:3001/api/news/
 
 
 
+######SERVICES-SIDEBAR############
+GET  http://localhost:3001/api/services
+
 ######### NOTICES ########
 
 ### ListNotices
