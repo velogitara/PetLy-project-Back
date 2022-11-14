@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
 
-const CATEGORIES = ['lost_found', 'sell', 'in_good_hands'];
+const CATEGORIES = ['lost', 'found', 'sell', 'for-free'];
 const SEX = ['male', 'female'];
 
 const noticeSchema = new Schema(
@@ -56,7 +56,7 @@ const noticeSchema = new Schema(
 
     imageURL: {
       type: Object,
-      default: null /* default should be null */,
+      default: null,
     },
 
     owner: {
