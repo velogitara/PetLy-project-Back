@@ -24,7 +24,7 @@ async function addPet(req, res) {
 
   res.status(201).json({
     data: {
-      result,
+      pet: result,
     },
   });
 }
