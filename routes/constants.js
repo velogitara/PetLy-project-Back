@@ -19,6 +19,7 @@ const ROUTES = {
   notices: {
     baseRoute: '/api/notices',
     getAll: '/',
+    getNoticesByQueryAndParams: '/search',
     getByCategory: '/categories/:category',
     getById: '/:noticeId',
     getByQuery: '/search/:query',

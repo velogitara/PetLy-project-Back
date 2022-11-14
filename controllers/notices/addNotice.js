@@ -15,7 +15,6 @@ const addNotice = async (req, res) => {
   const { _id } = create;
 
   if (!file) {
-    console.log('2');
     res.status(201).json({ data: create });
     return; /* need return */
   }

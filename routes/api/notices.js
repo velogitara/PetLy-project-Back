@@ -14,6 +14,11 @@ router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCate
 
 router.get(notices.listUserNotices, authenticate, controllerWrapper(controller.listUserNotices));
 
+router.get(
+  notices.getNoticesByQueryAndParams,
+  controllerWrapper(controller.getNoticesByQueryAndParams)
+);
+
 router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
 
 router.get(notices.getByQuery, controllerWrapper(controller.getNoticeByQuery));
