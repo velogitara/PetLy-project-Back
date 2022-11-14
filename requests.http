@@ -57,7 +57,9 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 
 GET http://localhost:3001/api/news/
 
+#########
 
+GET http://localhost:3001/api/news/search/:query/
 
 ######### NOTICES ########
 
