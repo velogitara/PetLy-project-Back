@@ -1,5 +1,5 @@
 const { Pet } = require('../../models');
-const { requestError } = require('../../helpers');
+const { requestError, imageRemover } = require('../../helpers');
 
 async function removePet(req, res) {
   const { user } = req;
@@ -13,9 +13,11 @@ async function removePet(req, res) {
     throw requestError(404, 'Not found');
   }
 
-  res.json({
-    message: 'Pet deleted succesfully!',
-  });
+  await imageRemover(pet.imageURL).then(
+    res.json({
+      message: 'Pet deleted succesfully!',
+    })
+  );
 }
 
 module.exports = removePet;
