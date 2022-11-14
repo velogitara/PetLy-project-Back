@@ -9,13 +9,13 @@ const listNoticesByCategory = async (req, res) => {
   const result = await Notice.find({ category }, '-createdAt -updatedAt', {
     skip,
     limit,
-  });
+  }).populate('owner', 'name email phone');
 
   if (!result) {
     throw requestError(404, 'Not found');
   }
 
-  res.json({ data: { [category]: result } });
+  res.json({ data: { notices: { [category]: result } } });
 };
 
 module.exports = listNoticesByCategory;

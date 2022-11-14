@@ -68,7 +68,7 @@ GET http://localhost:3001/api/notices/
 
 ### ListNoticesByCategory
 
-GET http://localhost:3001/api/notices/categories/in_good_hands
+GET http://localhost:3001/api/notices/categories/found
 
 
 ### GetNotiseById
@@ -94,7 +94,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
 Content-Disposition: form-data; name="data"
 
 {  
-    "category": "in_good_hands",
+    "category": "for-free",
     "title": "Cute cat looking for a good friend",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
@@ -119,7 +119,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 Content-Disposition: form-data; name="data"
 
 {   
-    "category": "lost_found",
+    "category": "found",
     "title": "Cute dog looking for a good friend",
     "description": "Very nice and polite dog hopes to find home and loving family to become a part of",
     "name": "Nora",
