@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { TokenExpiredError, verify } = require('jsonwebtoken');
 
 const { User } = require('../../models');
 const { requestError } = require('../../helpers');
@@ -12,13 +13,9 @@ const logIn = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
-  // const { _id } = user;
   if (!user) {
-    throw requestError(401, 'Email or password wrong');
+    throw requestError(401, 'User not found');
   }
-  //   if (!user.verify) {
-  //     throw requestError('Email not verify');
-  //   }
 
   const passwordCompare = await bcrypt.compare(password, user.password);
 
@@ -30,13 +27,55 @@ const logIn = async (req, res) => {
   };
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: TOKEN_EXPIRES_IN });
 
+  const { token: currentToken = null } = user;
+  if (!currentToken) {
+    await User.findByIdAndUpdate(user._id, { token }, { new: true });
+  }
   // await isTokenExpired(user.token, SECRET_KEY, _id, User);
 
-  if (user.token) {
-    throw requestError(409, 'User already logged In!');
-  }
-  const result = await User.findByIdAndUpdate(user._id, { token }, { new: true });
-  res.json({ data: { token: result.token } });
+  const isTokenExpired = async (currentToken, SECRET_KEY) => {
+    try {
+      console.log('checking token');
+      verify(currentToken, SECRET_KEY);
+      return await User.findByIdAndUpdate(user._id, { token }, { new: true });
+    } catch (error) {
+      if (error instanceof TokenExpiredError) {
+        console.log('token expired or broken');
+        console.log('token ReWrite');
+        // await User.findByIdAndUpdate(_id, { token: null });
+        return await User.findByIdAndUpdate(user._id, { token }, { new: true });
+      }
+    }
+  };
+
+  // if (!user.token) {
+  //   await isTokenExpired(currentToken, SECRET_KEY);
+  // }
+
+  const result = await isTokenExpired(currentToken, SECRET_KEY);
+
+  console.log('verification complete');
+
+  // const result = await User.findByIdAndUpdate(user._id, { token }, { new: true });
+
+  // if (user.token) {
+  //   console.log('IF', user.token);
+  //   throw requestError(409, 'User already logged In!');
+  // }
+
+  // {
+  //   data: result.token
+  //     ? { token: result.token }
+  //     : { message: 'User already logged In, Token is valid' },
+  // }
+  res.json({
+    data: currentToken
+      ? { token: result.token }
+      : {
+          token: token,
+          message: 'token lost forever, add new user',
+        },
+  });
 };
 
 module.exports = logIn;

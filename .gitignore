@@ -4,5 +4,4 @@ node_modules/
 
 # VSCode files
 .vscode/
-.http
-.log
+*.log
