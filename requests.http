@@ -68,7 +68,7 @@ GET http://localhost:3001/api/notices/
 
 ### ListNoticesByCategory
 
-GET http://localhost:3001/api/notices/categories/found
+GET http://localhost:3001/api/notices/categories/for-free?page=1&limit=8
 
 
 ### GetNotiseById

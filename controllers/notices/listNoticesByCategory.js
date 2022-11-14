@@ -12,10 +12,10 @@ const listNoticesByCategory = async (req, res) => {
   }).populate('owner', 'name email phone');
 
   if (!result) {
-    throw requestError(404, 'Not found');
+    throw requestError(404, `Notices not found in category ${category}`);
   }
 
-  res.json({ data: { notices: { [category]: result } } });
+  res.json({ data: { notices: result } });
 };
 
 module.exports = listNoticesByCategory;
