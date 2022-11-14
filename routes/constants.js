@@ -30,6 +30,7 @@ const ROUTES = {
   news: {
     baseRoute: '/api/news',
     getAll: '/',
+    getByQuery: '/search/:query',
   },
   services: {
     baseRoute: '/api/services',
