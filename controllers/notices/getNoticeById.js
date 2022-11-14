@@ -6,7 +6,7 @@ const getNoticeById = async (req, res) => {
   const result = await Notice.findById(noticeId);
 
   if (!result) {
-    throw requestError(404, 'Not found');
+    throw requestError(404, 'Notice not found');
   }
 
   res.json({ data: { notice: result } });
