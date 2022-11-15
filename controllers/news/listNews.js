@@ -6,7 +6,7 @@ const listNews = async (req, res) => {
   const data = await News.find({}, '', {
     skip,
     limit,
-  });
+  }).sort({ date: -1 });
 
   res.json({ data: { news: data } });
 };

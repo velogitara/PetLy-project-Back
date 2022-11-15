@@ -1,7 +1,7 @@
 const { Pet } = require('../../models');
 
 const getCurrent = async (req, res) => {
-  const { _id, name, email, birthday, phone, location, createdAt } = req.user;
+  const { _id, name, email, birthday, avatarURL, phone, location, createdAt } = req.user;
 
   const pets = await Pet.find({ owner: _id }, '-createdAt -updatedAt');
 
@@ -10,10 +10,11 @@ const getCurrent = async (req, res) => {
       user: {
         name,
         email,
-        birthday,
-        phone,
         location,
-        created: createdAt,
+        phone,
+        birthday,
+        avatarURL,
+        createdAt,
       },
       pets,
     },

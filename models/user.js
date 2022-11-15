@@ -83,28 +83,24 @@ const signInSchema = joi.object({
   }),
 });
 
-const updateSchema = joi
-  .object({
-    name: joi.string().messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-    }),
-    email: joi
-      .string()
-      .email({ minDomainSegments: 2, maxDomainSegments: 4 })
-      .messages({ 'string.email': `{{#label}} must be a valid email` }),
-    phone: joi.string().pattern(regexp.phone).messages({
-      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
-    }),
-    birthday: joi.date().messages({
-      'string.base': `{{#label}} must be a valid date`,
-      'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
-    }),
-    location: joi.string().messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-    }),
-  })
-  .min(1)
-  .messages({ 'any.min': 'missing fields' });
+const updateSchema = joi.object({
+  name: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+  }),
+  email: joi
+    .string()
+    .email({ minDomainSegments: 2, maxDomainSegments: 4 })
+    .messages({ 'string.email': `{{#label}} must be a valid email` }),
+  phone: joi.string().pattern(regexp.phone).messages({
+    'string.pattern.base': `{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}`,
+  }),
+  birthday: joi.date().messages({
+    'string.base': `{{#label}} must be a valid date`,
+  }),
+  location: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+  }),
+});
 
 const resendVerifyEmailSchema = joi.object({
   email: joi.string().email({ minDomainSegments: 2, maxDomainSegments: 4 }).required().messages({
