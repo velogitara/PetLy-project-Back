@@ -17,6 +17,14 @@ const imageSize = {
       width: 288,
       height: 288,
     },
+    profile: {
+      width: 288,
+      height: 328,
+    },
+    profileMobile: {
+      width: 240,
+      height: 240,
+    },
   },
   pets: {
     mobile: {
@@ -52,8 +60,8 @@ const imageUploader = async (folder, file, id) => {
       const sizes = Object.entries(imageSize[folder]);
       sizes.forEach(size => {
         const { width, height } = size[1];
-        const fileName = `${id}-${width}.${fileExtension}`;
-        const fileNameRetina = `${id}-${width}@2x.${fileExtension}`;
+        const fileName = `${id}-${width}x${height}.${fileExtension}`;
+        const fileNameRetina = `${id}-${width}x${height}@2x.${fileExtension}`;
         resizeImage(width, height, fileName);
         resizeImage(width * 2, height * 2, fileNameRetina);
         imageURL[size[0]] = path.join(folder, fileName);
