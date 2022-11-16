@@ -31,7 +31,7 @@ router.patch(
   authenticate,
   isValidId,
   validateBody(schemas.updateFavoriteSchema),
-  controllerWrapper(controller.updateFavorite)
+  controllerWrapper(controller.updateFavorites)
 );
 
 // router.put(
