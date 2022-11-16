@@ -35,6 +35,7 @@ const register = async (req, res) => {
   res.status(201).json({
     data: {
       token: result.token,
+      id: result._id,
     },
   });
 };

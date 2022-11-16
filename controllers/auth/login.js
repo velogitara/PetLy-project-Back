@@ -27,11 +27,10 @@ const logIn = async (req, res) => {
   };
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: TOKEN_EXPIRES_IN });
 
-  const { token: currentToken = null } = user;
+  const { token: currentToken = '456asd' } = user;
   if (!currentToken) {
     await User.findByIdAndUpdate(user._id, { token }, { new: true });
   }
-  // await isTokenExpired(user.token, SECRET_KEY, _id, User);
 
   const isTokenExpired = async (currentToken, SECRET_KEY) => {
     try {
@@ -42,7 +41,6 @@ const logIn = async (req, res) => {
       if (error instanceof TokenExpiredError) {
         console.log('token expired or broken');
         console.log('token ReWrite');
-        // await User.findByIdAndUpdate(_id, { token: null });
         return await User.findByIdAndUpdate(user._id, { token }, { new: true });
       }
     }
@@ -58,23 +56,16 @@ const logIn = async (req, res) => {
 
   // const result = await User.findByIdAndUpdate(user._id, { token }, { new: true });
 
-  // if (user.token) {
-  //   console.log('IF', user.token);
-  //   throw requestError(409, 'User already logged In!');
-  // }
-
   // {
   //   data: result.token
   //     ? { token: result.token }
   //     : { message: 'User already logged In, Token is valid' },
   // }
   res.json({
-    data: currentToken
-      ? { token: result.token }
-      : {
-          token: token,
-          message: 'token lost forever, add new user',
-        },
+    data: {
+      token: result.token,
+      id: result._id,
+    },
   });
 };
 
