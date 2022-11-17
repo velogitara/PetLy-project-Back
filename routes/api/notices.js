@@ -8,15 +8,15 @@ const {
   ROUTES: { notices },
 } = require('../constants');
 
-router.get(notices.getAll, controllerWrapper(controller.listNotices));
+router.get(notices.listNoticesByQuery, controllerWrapper(controller.getNoticeByQuery));
 
-router.get(notices.getByCategory, controllerWrapper(controller.listNoticesByCategory));
+router.get(notices.listNotices, controllerWrapper(controller.listNotices));
+
+router.get(notices.listNoticesByCategory, controllerWrapper(controller.listNoticesByCategory));
 
 router.get(notices.listUserNotices, authenticate, controllerWrapper(controller.listUserNotices));
 
-router.get(notices.getByQuery, controllerWrapper(controller.getNoticeByQuery));
-
-router.get(notices.getById, isValidId, controllerWrapper(controller.getNoticeById));
+router.get(notices.getNoticeById, isValidId, controllerWrapper(controller.getNoticeById));
 
 router.post(
   notices.addNotice,

@@ -70,6 +70,10 @@ GET  http://localhost:3001/api/services
 
 GET http://localhost:3001/api/notices/
 
+### ListNoticesByQuery
+
+GET http://localhost:3001/api/notices/?category=sell&query=cat
+
 
 ### ListNoticesByCategory
 
@@ -83,9 +87,9 @@ GET http://localhost:3001/api/notices/63727ab02e40897404bb4c6b
 
 ### ListUserNotices
 
-GET http://localhost:3001/api/notices/user?favorite=true
+GET http://localhost:3001/api/notices/own?favorite=true
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODI0ODc4OCwiZXhwIjoxNjY4MjkxOTg4fQ.H-KIvZzTifqtWK3hzUEwnqi5IYJ5P7gH53sUZs6lmw4
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODY3OTU0OSwiZXhwIjoxNjY4NzIyNzQ5fQ.PpI6kRqbdxXx8sKxjM5ZWUWMoRggIfMJuX6W2PsDmk8
 
 
 
