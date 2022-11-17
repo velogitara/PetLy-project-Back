@@ -2,8 +2,7 @@ const { News } = require('../../models/news');
 const { requestError } = require('../../helpers');
 
 const getNewsByQuery = async (req, res) => {
-  const { query } = req.params;
-  const { page = 1, limit = 6 } = req.query;
+  const { page = 1, limit = 6, query } = req.query;
   const skip = (page - 1) * limit;
   const result = await News.find({ $text: { $search: `${query}` } }, '', {
     skip,
