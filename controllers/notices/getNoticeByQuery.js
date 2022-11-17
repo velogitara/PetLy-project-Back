@@ -2,8 +2,7 @@ const { Notice } = require('../../models/notice');
 const { requestError } = require('../../helpers');
 
 const getNoticeByQuery = async (req, res) => {
-  const { query } = req.params;
-  const { page = 1, limit = 8, category } = req.query;
+  const { page = 1, limit = 8, query, category } = req.query;
   const skip = (page - 1) * limit;
 
   const result = await Notice.find(
