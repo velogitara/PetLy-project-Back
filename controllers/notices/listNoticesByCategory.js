@@ -6,7 +6,7 @@ const listNoticesByCategory = async (req, res) => {
   const { page = 1, limit = 8 } = req.query;
   const skip = (page - 1) * limit;
 
-  const result = await Notice.find({ category }, '-name -sex -createdAt -updatedAt', {
+  const result = await Notice.find({ category }, '-name -sex - comments -createdAt -updatedAt', {
     skip,
     limit,
   }).populate('owner', 'name email phone');
