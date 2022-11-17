@@ -30,7 +30,6 @@ const ROUTES = {
   news: {
     baseRoute: '/api/news',
     getAll: '/',
-    getByQuery: '/search/:query',
   },
   friends: {
     baseRoute: '/api/friends',
