@@ -61,6 +61,9 @@ GET http://localhost:3001/api/news/
 
 GET http://localhost:3001/api/news/search/:query/
 
+######SERVICES-SIDEBAR############
+GET  http://localhost:3001/api/services
+
 ######### NOTICES ########
 
 ### ListNotices
@@ -75,7 +78,7 @@ GET http://localhost:3001/api/notices/categories/for-free?page=1&limit=8
 
 ### GetNotiseById
 
-GET http://localhost:3001/api/notices/6370f09bed87c236bfd478aa
+GET http://localhost:3001/api/notices/63727ab02e40897404bb4c6b
 
 
 ### ListUserNotices
@@ -90,18 +93,19 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 
 POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODM0MzkwMCwiZXhwIjoxNjY4Mzg3MTAwfQ.JooGTW-39tXoXI1pvNiqNXzV0vmNDXiervCMJqPg4v8
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYxMDIzMywiZXhwIjoxNjY4NjUzNDMzfQ.QSbuLW4s-Dep-OQWmc_hB9gfHQYu7dD4_be--n_DmRA
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {  
-    "category": "for-free",
-    "title": "Cute cat looking for a good friend",
+    "category": "sell",
+    "title": "Cute citty looking for a good friend",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
     "location": "Dnipro",
-    "sex": "male"
+    "sex": "male",
+    "price": 1200
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -115,18 +119,19 @@ Content-Type: image/png
 
 POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {   
-    "category": "found",
-    "title": "Cute dog looking for a good friend",
+    "category": "sell",
+    "title": "Cute dog looking for a good family",
     "description": "Very nice and polite dog hopes to find home and loving family to become a part of",
     "name": "Nora",
     "location": "Lviv",
-    "sex": "female"
+    "sex": "female",
+    "price": 1000
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -140,7 +145,7 @@ Content-Type: image/png
 
 POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
@@ -165,9 +170,9 @@ Content-Type: image/png
 
 ### UpdateFavorites
 
-PATCH http://localhost:3001/api/notices/favorites/636e5eec9f570f1a04a2fd28
+PATCH http://localhost:3001/api/notices/favorites/6374f90950438de5e831afcf
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODE4NTk3MywiZXhwIjoxNjY4MjI5MTczfQ.4s9fVr1kMQZHfhnwTWb6oKfB_WrA042sP-GDSnqVYAM
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODYxMDM1MiwiZXhwIjoxNjY4NjUzNTUyfQ.bC7Q7mlDTt5dfoehP4IH21WMnIavYrMf-nKHLkOEKbw
 
 {   
     "favorite": true
@@ -175,5 +180,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZ
 
 ### RemoveNotice
 
-DELETE http://localhost:3001/api/notices/63710ae2f8a72f6a54f39804
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODM0NTc5NCwiZXhwIjoxNjY4Mzg4OTk0fQ.XhW8TBoJ7jyNCRrufaYzY1R9BY7KGL2Q1rgX5UmvegQ
+DELETE http://localhost:3001/api/notices/6374f76050438de5e831afba
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
