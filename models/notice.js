@@ -59,6 +59,11 @@ const noticeSchema = new Schema(
       default: null,
     },
 
+    comments: {
+      type: String,
+      default: null,
+    },
+
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
@@ -126,6 +131,12 @@ const addNoticeSchema = joi.object({
     }),
   price: joi.number().messages({
     'number.base': `{{#label}} should be a type of 'number'`,
+  }),
+  comments: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
   }),
 });
 
