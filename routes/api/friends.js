@@ -7,6 +7,6 @@ const {
   ROUTES: { friends },
 } = require('../constants');
 
-router.get(friends.getAll, controllerWrapper(controller.listFriends));
+router.get(friends.listFriends, controllerWrapper(controller.listFriends));
 
 module.exports = router;

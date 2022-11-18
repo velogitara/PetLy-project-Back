@@ -29,11 +29,12 @@ const ROUTES = {
   },
   news: {
     baseRoute: '/api/news',
-    getAll: '/',
+    listNews: '/',
+    addNews: '/',
   },
   friends: {
     baseRoute: '/api/friends',
-    getAll: '/',
+    listFriends: '/',
   },
 };
 
