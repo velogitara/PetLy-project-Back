@@ -5,7 +5,7 @@ const addNotice = require('./addNotice');
 const listUserNotices = require('./listUserNotices');
 const updateFavorites = require('./updateFavorites');
 const removeNotice = require('./removeNotice');
-const getNoticeByQuery = require('./getNoticeByQuery');
+const listNoticeByQuery = require('./listNoticeByQuery');
 
 module.exports = {
   listNotices,
@@ -15,5 +15,5 @@ module.exports = {
   addNotice,
   updateFavorites,
   removeNotice,
-  getNoticeByQuery,
+  listNoticeByQuery,
 };
