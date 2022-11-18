@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Joi = require('joi');
+const joi = require('joi');
 const { handleSaveError } = require('../helpers');
 const format = require('date-format');
 
@@ -11,6 +11,7 @@ const newsSchema = new Schema(
     },
     url: {
       type: String,
+      default: null,
     },
     description: {
       type: String,
@@ -25,10 +26,20 @@ const newsSchema = new Schema(
 );
 newsSchema.post('save', handleSaveError);
 
-const addNewsSchema = Joi.object({
-  title: Joi.string().required(),
-  url: Joi.string().required(),
-  description: Joi.string().required(),
+const addNewsSchema = joi.object({
+  title: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
+  url: joi.string().required(),
+  description: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
 });
 
 const News = model('news', newsSchema);

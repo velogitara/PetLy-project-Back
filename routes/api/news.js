@@ -10,7 +10,6 @@ const {
 } = require('../constants');
 
 router.get(news.getAll, controllerWrapper(controller.listNews));
-router.get(news.getByQuery, controllerWrapper(controller.getNewsByQuery));
 
 router.post(
   news.getAll,

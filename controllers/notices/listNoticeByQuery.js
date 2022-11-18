@@ -1,7 +1,7 @@
 const { Notice } = require('../../models/notice');
 const { requestError } = require('../../helpers');
 
-const getNoticeByQuery = async (req, res) => {
+const listNoticeByQuery = async (req, res) => {
   const { page = 1, limit = 8, query, category } = req.query;
   const skip = (page - 1) * limit;
 
@@ -17,4 +17,4 @@ const getNoticeByQuery = async (req, res) => {
 
   res.json({ data: { query: result } });
 };
-module.exports = getNoticeByQuery;
+module.exports = listNoticeByQuery;
