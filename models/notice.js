@@ -132,11 +132,10 @@ const addNoticeSchema = joi.object({
   price: joi.number().messages({
     'number.base': `{{#label}} should be a type of 'number'`,
   }),
-  comments: joi.string().required().messages({
+  comments: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
-    'any.required': `missing required field: {{#label}}`,
   }),
 });
 

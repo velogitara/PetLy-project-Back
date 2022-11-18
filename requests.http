@@ -2,7 +2,7 @@
 
 ### SignUp
 
-POST http://localhost:3001/api/auth/register/
+POST https://petly-project-goit.herokuapp.com/api/auth/register/
 content-type: application/json
 
 {
@@ -14,7 +14,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3001/api/auth/register/
+POST https://petly-project-goit.herokuapp.com/api/auth/register/
 content-type: application/json
 
 {
@@ -27,7 +27,7 @@ content-type: application/json
 
 ### SignIn
 
-POST http://localhost:3001/api/auth/login/
+POST https://petly-project-goit.herokuapp.com/api/auth/login/
 content-type: application/json
 
 {
@@ -37,7 +37,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3001/api/auth/login/
+POST https://petly-project-goit.herokuapp.com/api/auth/login/
 content-type: application/json
 
 {
@@ -48,63 +48,63 @@ content-type: application/json
 
 ### SignOut
 
-GET  http://localhost:3001/api/auth/logout/
+GET  https://petly-project-goit.herokuapp.com/api/auth/logout/
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODM0NTcyMCwiZXhwIjoxNjY4Mzg4OTIwfQ.JGeAjcS0VR6Olc3nsZ5bQdHOx7O7lCfsL8deIToSw-0
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
 
 
 ######### NEWS ########
 
-GET http://localhost:3001/api/news/
+GET https://petly-project-goit.herokuapp.com/api/news/
 
 #########
 
-GET http://localhost:3001/api/news/search/:query/
+GET https://petly-project-goit.herokuapp.com/api/news/search/:query/
 
 ######SERVICES-SIDEBAR############
-GET  http://localhost:3001/api/services
+GET  https://petly-project-goit.herokuapp.com/api/services
 
 ######### NOTICES ########
 
 ### ListNotices
 
-GET http://localhost:3001/api/notices/
+GET https://petly-project-goit.herokuapp.com/api/notices/
 
 ### ListNoticesByQuery
 
-GET http://localhost:3001/api/notices/?category=sell&query=cat
+GET https://petly-project-goit.herokuapp.com/api/notices/?category=sell&query=cat
 
 
 ### ListNoticesByCategory
 
-GET http://localhost:3001/api/notices/categories/for-free?page=1&limit=8
+GET https://petly-project-goit.herokuapp.com/api/notices/categories/sell?page=1&limit=8
 
 
 ### GetNotiseById
 
-GET http://localhost:3001/api/notices/63727ab02e40897404bb4c6b
+GET https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b6544769
 
 
 ### ListUserNotices
 
-GET http://localhost:3001/api/notices/own?favorite=true
+GET https://petly-project-goit.herokuapp.com/api/notices/own?favorite=true
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODY3OTU0OSwiZXhwIjoxNjY4NzIyNzQ5fQ.PpI6kRqbdxXx8sKxjM5ZWUWMoRggIfMJuX6W2PsDmk8
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
 
 
 
 ### AddNotice
 
-POST http://localhost:3001/api/notices/
+POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYxMDIzMywiZXhwIjoxNjY4NjUzNDMzfQ.QSbuLW4s-Dep-OQWmc_hB9gfHQYu7dD4_be--n_DmRA
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {  
     "category": "sell",
-    "title": "Cute citty looking for a good friend",
+    "title": "Cute cat looking for a good friend",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
     "location": "Dnipro",
@@ -121,7 +121,7 @@ Content-Type: image/png
 
 ###
 
-POST http://localhost:3001/api/notices/
+POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
 
@@ -147,7 +147,7 @@ Content-Type: image/png
 
 ###
 
-POST http://localhost:3001/api/notices/
+POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
 
@@ -174,9 +174,9 @@ Content-Type: image/png
 
 ### UpdateFavorites
 
-PATCH http://localhost:3001/api/notices/favorites/6374f90950438de5e831afcf
+PATCH https://petly-project-goit.herokuapp.com/api/notices/favorites/63714b717d632b76b6544769
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2ODYxMDM1MiwiZXhwIjoxNjY4NjUzNTUyfQ.bC7Q7mlDTt5dfoehP4IH21WMnIavYrMf-nKHLkOEKbw
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
 
 {   
     "favorite": true
@@ -184,5 +184,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
 
 ### RemoveNotice
 
-DELETE http://localhost:3001/api/notices/6374f76050438de5e831afba
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
+DELETE https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b6544769
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
