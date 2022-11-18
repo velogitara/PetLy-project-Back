@@ -55,14 +55,14 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
 
 ######### NEWS ########
 
-GET http://localhost:3001/api/news/
+GET http://localhost:3001/api/news
 
-#########
+########
+GET http://localhost:3001/api/news?page=2
 
-GET http://localhost:3001/api/news/search/:query/
 
 ######SERVICES-SIDEBAR############
-GET  http://localhost:3001/api/services
+GET  http://localhost:3001/api/friends
 
 ######### NOTICES ########
 

@@ -1,19 +1,20 @@
 const { Schema, model } = require('mongoose');
-const Joi = require('joi');
 const { handleSaveError } = require('../helpers');
 const { regexp } = require('../helpers');
 
-const servicesSchema = new Schema(
+const friendsSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, 'Please, provide title for news'],
+      required: [true, 'Please, provide title for friends'],
     },
     url: {
       type: String,
+      default: null,
     },
     addressUrl: {
       type: String,
+      default: null,
     },
     imageUrl: {
       type: Object,
@@ -21,9 +22,12 @@ const servicesSchema = new Schema(
     },
     address: {
       type: String,
-      required: [true, 'Please, provide article for news'],
+      required: [true, 'Please, provide address for friends'],
     },
-    workDays: {},
+    workDays: {
+      type: Array,
+      default: [],
+    },
     phone: {
       type: String,
       required: [true, 'Phone is required'],
@@ -39,18 +43,10 @@ const servicesSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-servicesSchema.post('save', handleSaveError);
+friendsSchema.post('save', handleSaveError);
 
-const addServicesSchema = Joi.object({
-  title: Joi.string().required(),
-  url: Joi.string().required(),
-  description: Joi.string().required(),
-});
-
-const Services = model('services', servicesSchema);
-const schemas = { addServicesSchema };
+const Friends = model('friends', friendsSchema);
 
 module.exports = {
-  Services,
-  schemas,
+  Friends,
 };
