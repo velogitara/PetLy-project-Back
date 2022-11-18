@@ -45,8 +45,8 @@ const friendsSchema = new Schema(
 
 friendsSchema.post('save', handleSaveError);
 
-const Friends = model('friends', friendsSchema);
+const Friend = model('friend', friendsSchema);
 
 module.exports = {
-  Friends,
+  Friend,
 };

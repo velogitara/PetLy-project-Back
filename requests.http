@@ -55,10 +55,21 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM
 
 ######### NEWS ########
 
+######## listNews
 GET http://localhost:3001/api/news
 
-########
+######## listNews 2nd page
 GET http://localhost:3001/api/news?page=2
+
+######## 
+POST http://localhost:3001/api/news
+content-type: application/json
+
+{
+    "title": "Exanple",
+    "description": "54321",
+       "url": "ghghghg"
+}
 
 
 ######SERVICES-SIDEBAR############
