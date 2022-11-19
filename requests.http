@@ -106,7 +106,7 @@ GET https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b654476
 
 GET https://petly-project-goit.herokuapp.com/api/notices/own?favorite=true
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg2MDU0NSwiZXhwIjoxNjY4ODY0MTQ1fQ.2vJj9InQ8rsOQ1sZDe4lt1BIJTW6LuxLa0LqpXDzhHM
 
 
 
@@ -114,19 +114,20 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg1NjgwOCwiZXhwIjoxNjY4ODYwNDA4fQ.8d9jba_jexZC-2WVXy_28kKBfgZjlgVbKD9HgDWNAAY
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {  
     "category": "sell",
-    "title": "Cute cat looking for a good friend",
+    "title": "Cute cat looking for a good family",
     "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
     "location": "Dnipro",
     "sex": "male",
-    "price": 1200
+    "price": 1200,
+    "comments": "Please, feel free to contact me at the weekend"
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -140,7 +141,7 @@ Content-Type: image/png
 
 POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzczODA2ZjkyNjkyNTViNmE5ZmU3MiIsImlhdCI6MTY2ODc1OTk2OSwiZXhwIjoxNjY4NzYzNTY5fQ.A0GCRMhSsL6az5opTa43RA4IropPd_JK3d9kECo2IHs
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
@@ -152,7 +153,8 @@ Content-Disposition: form-data; name="data"
     "name": "Nora",
     "location": "Lviv",
     "sex": "female",
-    "price": 1000
+    "price": 1000,
+    "comments": "Please, feel free to contact me at the weekend"
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -166,7 +168,7 @@ Content-Type: image/png
 
 POST https://petly-project-goit.herokuapp.com/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmU3ZjBmZmNhOTUwMTFiZDAxOTU5ZCIsImlhdCI6MTY2ODYwODUwMSwiZXhwIjoxNjY4NjUxNzAxfQ.AFZFlMzH5qe3om01ACa6lTU7GYtjlvr9c3aP1OR3MsA
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzczODA2ZjkyNjkyNTViNmE5ZmU3MiIsImlhdCI6MTY2ODc1OTk2OSwiZXhwIjoxNjY4NzYzNTY5fQ.A0GCRMhSsL6az5opTa43RA4IropPd_JK3d9kECo2IHs
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
@@ -178,7 +180,8 @@ Content-Disposition: form-data; name="data"
     "name": "Patty",
     "location": "Kyiv",
     "sex": "male",
-    "price": 100
+    "price": 100,
+    "comments": "Please, feel free to contact me at the weekend"
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -189,11 +192,11 @@ Content-Type: image/png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 
-### UpdateFavorites
+### UpdateFavorites 
 
 PATCH https://petly-project-goit.herokuapp.com/api/notices/favorites/63714b717d632b76b6544769
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg1Mjc3NywiZXhwIjoxNjY4ODU2Mzc3fQ.kC5_ZtWBfBp84uV-XwwTtQOuCMnRsgF2PlP0agmUKso
 
 {   
     "favorite": true
@@ -201,5 +204,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### RemoveNotice
 
-DELETE https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b6544769
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+DELETE https://petly-project-goit.herokuapp.com/api/notices/63702672d343c1247a6258fc
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg2MDU0NSwiZXhwIjoxNjY4ODY0MTQ1fQ.2vJj9InQ8rsOQ1sZDe4lt1BIJTW6LuxLa0LqpXDzhHM
