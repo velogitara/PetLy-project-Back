@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
-const Joi = require('joi');
+const joi = require('joi');
 const { handleSaveError } = require('../helpers');
-const format = require('date-format');
 
 const newsSchema = new Schema(
   {
@@ -11,24 +10,31 @@ const newsSchema = new Schema(
     },
     url: {
       type: String,
+      required: [true, 'Please, provide url for news'],
     },
     description: {
       type: String,
       required: [true, 'Please, provide article for news'],
-    },
-    data: {
-      type: String,
-      default: () => format('dd/MM/yyyy', new Date()),
     },
   },
   { versionKey: false, timestamps: true }
 );
 newsSchema.post('save', handleSaveError);
 
-const addNewsSchema = Joi.object({
-  title: Joi.string().required(),
-  url: Joi.string().required(),
-  description: Joi.string().required(),
+const addNewsSchema = joi.object({
+  title: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
+  url: joi.string().required(),
+  description: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
 });
 
 const News = model('news', newsSchema);

@@ -29,12 +29,12 @@ const ROUTES = {
   },
   news: {
     baseRoute: '/api/news',
-    getAll: '/',
-    getByQuery: '/search/:query',
+    listNews: '/',
+    addNews: '/',
   },
-  services: {
-    baseRoute: '/api/services',
-    getAll: '/',
+  friends: {
+    baseRoute: '/api/friends',
+    listFriends: '/',
   },
 };
 

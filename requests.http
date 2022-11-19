@@ -55,14 +55,31 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ######### NEWS ########
 
+
+
 GET https://petly-project-goit.herokuapp.com/api/news/
 
-#########
+
+
+######## listNews 2nd page
+GET http://localhost:3001/api/news?page=2
+
+######## 
+POST http://localhost:3001/api/news
+content-type: application/json
+
+{
+    "title": "Exanple",
+    "description": "54321",
+       "url": "ghghghg"
+}
+
 
 GET https://petly-project-goit.herokuapp.com/api/news/search/:query/
 
 ######SERVICES-SIDEBAR############
 GET  https://petly-project-goit.herokuapp.com/api/services
+
 
 ######### NOTICES ########
 
