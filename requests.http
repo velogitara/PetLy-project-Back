@@ -106,7 +106,7 @@ GET https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b654476
 
 GET https://petly-project-goit.herokuapp.com/api/notices/own?favorite=true
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg1Mjc3NywiZXhwIjoxNjY4ODU2Mzc3fQ.kC5_ZtWBfBp84uV-XwwTtQOuCMnRsgF2PlP0agmUKso
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg2MDU0NSwiZXhwIjoxNjY4ODY0MTQ1fQ.2vJj9InQ8rsOQ1sZDe4lt1BIJTW6LuxLa0LqpXDzhHM
 
 
 
@@ -204,5 +204,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### RemoveNotice
 
-DELETE https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b6544769
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+DELETE https://petly-project-goit.herokuapp.com/api/notices/63702672d343c1247a6258fc
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg2MDU0NSwiZXhwIjoxNjY4ODY0MTQ1fQ.2vJj9InQ8rsOQ1sZDe4lt1BIJTW6LuxLa0LqpXDzhHM
