@@ -70,6 +70,9 @@ const registerSchema = joi.object({
     'string.phone': `{{#label}} cannot be an empty field`,
     'any.required': `missing required field: {{#label}}`,
   }),
+  location: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+  }),
 });
 
 const signInSchema = joi.object({
