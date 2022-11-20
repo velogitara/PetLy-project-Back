@@ -12,7 +12,7 @@ const listUserNotices = async (req, res) => {
       skip,
       limit,
     }
-  );
+  ).populate('owner', 'name email phone');
 
   res.json({
     data: {

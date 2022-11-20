@@ -7,7 +7,7 @@ const updateFavorites = async (req, res) => {
   const action = favorite ? { $addToSet: { favorite: _id } } : { $pull: { favorite: _id } };
   await Notice.findByIdAndUpdate({ _id: noticeId }, action);
 
-  res.json({ message: `Successfuly: ${favorite ? 'add to' : 'removed from'} Favorites` });
+  res.json({ message: `Successfuly ${favorite ? 'added to' : 'removed from'} Favorites` });
 };
 
 module.exports = updateFavorites;

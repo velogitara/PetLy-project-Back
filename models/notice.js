@@ -30,7 +30,7 @@ const noticeSchema = new Schema(
 
     birthday: {
       type: Date,
-      default: '0000',
+      default: null,
     },
 
     breed: {
@@ -109,6 +109,11 @@ const addNoticeSchema = joi.object({
     'any.required': `missing required field: {{#label}}`,
   }),
   breed: joi.string().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+  }),
+  birthday: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
