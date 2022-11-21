@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
 
-const CATEGORIES = ['lost', 'found', 'sell', 'for-free'];
+// const CATEGORIES = ['lost', 'found', 'sell', 'for-free'];
 const SEX = ['male', 'female'];
 
 const noticeSchema = new Schema(
@@ -18,10 +18,10 @@ const noticeSchema = new Schema(
       unique: true,
     },
 
-    description: {
-      type: String,
-      required: [true, 'Set description for notice'],
-    },
+    // description: {
+    //   type: String,
+    //   required: [true, 'Set description for notice'],
+    // },
 
     name: {
       type: String,
@@ -80,28 +80,24 @@ const noticeSchema = new Schema(
 noticeSchema.post('save', handleSaveError);
 
 const addNoticeSchema = joi.object({
-  category: joi
-    .string()
-    .valid(...CATEGORIES)
-    .required()
-    .messages({
-      'string.base': `{{#label}} should be a type of 'text'`,
-      'string.empty': `{{#label}} cannot be an empty field`,
-      'string.trim': '{{#label}} must not have leading or trailing whitespace',
-      'any.required': `missing required field: {{#label}}`,
-    }),
+  category: joi.string().required().messages({
+    'string.base': `{{#label}} should be a type of 'text'`,
+    'string.empty': `{{#label}} cannot be an empty field`,
+    'string.trim': '{{#label}} must not have leading or trailing whitespace',
+    'any.required': `missing required field: {{#label}}`,
+  }),
   title: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
-  description: joi.string().required().messages({
-    'string.base': `{{#label}} should be a type of 'text'`,
-    'string.empty': `{{#label}} cannot be an empty field`,
-    'string.trim': '{{#label}} must not have leading or trailing whitespace',
-    'any.required': `missing required field: {{#label}}`,
-  }),
+  // description: joi.string().required().messages({
+  //   'string.base': `{{#label}} should be a type of 'text'`,
+  //   'string.empty': `{{#label}} cannot be an empty field`,
+  //   'string.trim': '{{#label}} must not have leading or trailing whitespace',
+  //   'any.required': `missing required field: {{#label}}`,
+  // }),
   name: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
