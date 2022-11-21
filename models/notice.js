@@ -17,12 +17,6 @@ const noticeSchema = new Schema(
       required: [true, 'Set title for notice'],
       unique: true,
     },
-
-    // description: {
-    //   type: String,
-    //   required: [true, 'Set description for notice'],
-    // },
-
     name: {
       type: String,
       required: [true, 'Set name for pet'],
@@ -92,12 +86,6 @@ const addNoticeSchema = joi.object({
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
-  // description: joi.string().required().messages({
-  //   'string.base': `{{#label}} should be a type of 'text'`,
-  //   'string.empty': `{{#label}} cannot be an empty field`,
-  //   'string.trim': '{{#label}} must not have leading or trailing whitespace',
-  //   'any.required': `missing required field: {{#label}}`,
-  // }),
   name: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
