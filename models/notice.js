@@ -3,13 +3,14 @@ const { Schema, model } = require('mongoose');
 const joi = require('joi');
 const { handleSaveError } = require('../helpers');
 
-// const CATEGORIES = ['lost', 'found', 'sell', 'for-free'];
+const CATEGORIES = ['lost', 'found', 'sell', 'for-free'];
 const SEX = ['male', 'female'];
 
 const noticeSchema = new Schema(
   {
     category: {
       type: String,
+      enum: CATEGORIES,
       required: [true, 'Set category for notice'],
     },
     title: {
