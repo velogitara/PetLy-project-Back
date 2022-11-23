@@ -12,7 +12,7 @@ const { ACCESS_TOKEN_SECRET_KEY } = process.env;
 const authenticate = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization;
-    console.log(authHeader);
+    // console.log(authHeader);
     if (!authHeader?.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -20,15 +20,20 @@ const authenticate = async (req, res, next) => {
     // const { authorization = '' } = req.headers;
     // const [bearer = '', token = null] = authorization.split(' ');
     const token = authHeader.split(' ')[1];
-    console.log('just Token:', token);
+    // console.log('just Token:', token);
 
     // if (bearer !== 'Bearer') {
     //   throwUnauthorizedError();
     // }
 
-    const { id } = jwt.verify(token, ACCESS_TOKEN_SECRET_KEY);
+    const id = jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, (err, decoded) => {
+      if (err) {
+        return res.status(403).json({ message: 'forbidden, token expired' });
+      }
+      return decoded.id;
+    });
     const user = await User.findById(id);
-    console.log('User Data:', user);
+    // console.log('User Data:', user);
     if (!user) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -36,6 +41,7 @@ const authenticate = async (req, res, next) => {
     next();
   } catch (error) {
     console.log('something went wrong');
+    console.log(error);
     next(error);
   }
 };
