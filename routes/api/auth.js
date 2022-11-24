@@ -21,6 +21,6 @@ router.post(
   controllerWrapper(controller.logIn)
 );
 
-router.get(auth.signOut, controllerWrapper(authenticate), controllerWrapper(controller.logOut));
+router.post(auth.signOut, controllerWrapper(authenticate), controllerWrapper(controller.logOut));
 
 module.exports = router;
