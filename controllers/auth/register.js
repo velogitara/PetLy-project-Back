@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 
 const { requestError } = require('../../helpers');
-const { User, Session } = require('../../models');
+const { User } = require('../../models');
 // const { TOKEN_EXPIRES_IN } = process.env;
 const { ACCESS_TOKEN_SECRET_KEY, REFRESH_TOKEN_SECRET_KEY } = process.env;
 
@@ -25,13 +25,13 @@ const register = asyncHandler(async (req, res) => {
 
   const { _id: userId } = createUser;
 
-  const newSession = await Session.create({
-    uid: userId,
-  });
+  // const newSession = await Session.create({
+  //   uid: userId,
+  // });
 
   const payload = {
     uid: userId,
-    sid: newSession._id,
+    // sid: newSession._id,
   };
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
     expiresIn: '15m',

@@ -71,6 +71,8 @@
 
 // module.exports = logIn;
 
+/// ========================= second method =========================
+
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -92,8 +94,13 @@ const logIn = asyncHandler(async (req, res) => {
     throw requestError(401, 'Email or password wrong');
   }
 
+  // const newSession = await Session.create({
+  //   uid: user._id,
+  // });
+
   const payload = {
     id: user._id,
+    // sid: newSession._id,
   };
 
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
@@ -120,3 +127,5 @@ const logIn = asyncHandler(async (req, res) => {
 });
 
 module.exports = logIn;
+
+/// ========================= third method =========================
