@@ -9,7 +9,10 @@ const listNoticeByQuery = async (req, res) => {
     { $text: { $search: `${query}` }, category },
     { score: { $meta: 'textScore' } },
     { skip, limit }
-  ).populate('owner', 'name email phone').sort({ score: { $meta: 'textScore' } });
+  )
+    .populate('owner', 'name email phone')
+    .sort({ score: { $meta: 'textScore' } })
+    .sort({ createdAt: -1 });
 
   if (!result) {
     throw requestError(404, 'Not found');
