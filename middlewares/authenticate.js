@@ -1,13 +1,12 @@
-const { User } = require('../models/user');
+const { User } = require('../models');
 const jwt = require('jsonwebtoken');
-// const { TokenExpiredError } = require('jsonwebtoken');
 
-// const { requestError } = require('../helpers');
+const { requestError } = require('../helpers');
 const { ACCESS_TOKEN_SECRET_KEY } = process.env;
 
-// const throwUnauthorizedError = () => {
-//   throw requestError(401, 'Unauthorized');
-// };
+const throwUnauthorizedError = () => {
+  throw requestError(401, 'Unauthorized');
+};
 
 const authenticate = async (req, res, next) => {
   try {
@@ -17,31 +16,30 @@ const authenticate = async (req, res, next) => {
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    // const { authorization = '' } = req.headers;
-    // const [bearer = '', token = null] = authorization.split(' ');
-    const token = authHeader.split(' ')[1];
+    const { authorization = '' } = req.headers;
+    const [bearer = '', token = null] = authorization.split(' ');
+    // const token = authHeader.split(' ')[1];
     // console.log('just Token:', token);
 
-    // if (bearer !== 'Bearer') {
-    //   throwUnauthorizedError();
-    // }
-
-    const id = jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, (err, decoded) => {
-      if (err) {
-        return res.status(403).json({ message: 'forbidden, token expired' });
-      }
-      return decoded.id;
-    });
-    const user = await User.findById(id);
-    // console.log('User Data:', user);
-    if (!user) {
-      return res.status(401).json({ message: 'Unauthorized' });
+    if (bearer !== 'Bearer') {
+      throwUnauthorizedError();
     }
-    req.user = user;
-    next();
+
+    jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ message: 'forbidden, token expired' });
+      }
+      const user = await User.findById(decoded.id);
+      if (!user) {
+        return res.status(404).send({ message: 'Invalid user' });
+      }
+
+      req.user = user;
+      next();
+    });
   } catch (error) {
-    console.log('something went wrong');
-    console.log(error);
+    // return res.status(400).send({ message: "No token provided" })
+
     next(error);
   }
 };

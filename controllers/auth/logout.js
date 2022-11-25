@@ -1,24 +1,23 @@
-// const { User } = require('../../models');
+const { Session } = require('../../models');
+const { REFRESH_TOKEN_SECRET_KEY } = process.env;
+const jwt = require('jsonwebtoken');
 
 const logOut = async (req, res) => {
   const cookies = req.cookies;
-  // console.log(cookies);
   if (!cookies?.jwt) return res.sendStatus(204); /* No content */
+
+  const refreshToken = cookies.jwt;
+
+  const { sid } = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET_KEY);
+
+  await Session.findByIdAndDelete(sid);
 
   // const { _id } = req.user;
   // await User.findByIdAndUpdate(_id, { token: null });
-  res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: false });
+  res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
   res.json({
     message: 'logout success, Cookie cleared ',
   });
 };
-
-// ====== web example
-// const logout = (req, res) => {
-//   const cookies = req.cookies;
-//   if (!cookies?.jwt) return res.sendStatus(204); //No content
-//   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
-//   res.json({ message: 'Cookie cleared' });
-// };
 
 module.exports = logOut;

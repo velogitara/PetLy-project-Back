@@ -13,4 +13,5 @@ const Session = model('session', sessionSchema);
 
 module.exports = {
   Session,
+  sessionSchema,
 };

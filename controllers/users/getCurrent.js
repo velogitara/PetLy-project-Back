@@ -1,8 +1,6 @@
 const { Pet } = require('../../models');
 
 const getCurrent = async (req, res) => {
-  const cookies = req.cookies;
-  console.log(cookies);
   const { _id, name, email, birthday, avatarURL, phone, location, createdAt } = req.user;
 
   const pets = await Pet.find({ owner: _id }, '-createdAt -updatedAt');

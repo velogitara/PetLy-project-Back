@@ -77,7 +77,7 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const { User } = require('../../models');
+const { User, Session } = require('../../models');
 const { requestError } = require('../../helpers');
 const { ACCESS_TOKEN_SECRET_KEY, REFRESH_TOKEN_SECRET_KEY } = process.env;
 
@@ -94,17 +94,17 @@ const logIn = asyncHandler(async (req, res) => {
     throw requestError(401, 'Email or password wrong');
   }
 
-  // const newSession = await Session.create({
-  //   uid: user._id,
-  // });
+  const newSession = await Session.create({
+    uid: user._id,
+  });
 
   const payload = {
     id: user._id,
-    // sid: newSession._id,
+    sid: newSession._id,
   };
 
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '15m',
+    expiresIn: '1m',
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
@@ -114,7 +114,7 @@ const logIn = asyncHandler(async (req, res) => {
   // Create secure cookie with refresh token
   res.cookie('jwt', refreshToken, {
     httpOnly: true /* accessible only by web server */,
-    secure: false /* https */,
+    secure: true /* https */,
     sameSite: 'None' /* cross-site cookie */,
     maxAge: 7 * 24 * 60 * 60 * 1000 /* cookie expiry: set to match rT */,
   });
