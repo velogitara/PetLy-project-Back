@@ -8,7 +8,6 @@ const petSchema = new Schema(
     name: {
       type: String,
       required: [true, 'Set name for pet'],
-      unique: true,
     },
 
     birthday: {
