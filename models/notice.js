@@ -20,7 +20,7 @@ const noticeSchema = new Schema(
     },
     name: {
       type: String,
-      required: [true, 'Set name for pet'],
+      default: 'unknown',
     },
 
     birthday: {
@@ -87,21 +87,15 @@ const addNoticeSchema = joi.object({
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
     'any.required': `missing required field: {{#label}}`,
   }),
-  name: joi.string().required().messages({
+  name: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
-    'string.empty': `{{#label}} cannot be an empty field`,
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
-    'any.required': `missing required field: {{#label}}`,
   }),
   breed: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
-    'string.empty': `{{#label}} cannot be an empty field`,
-    'string.trim': '{{#label}} must not have leading or trailing whitespace',
   }),
   birthday: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
-    'string.empty': `{{#label}} cannot be an empty field`,
-    'string.trim': '{{#label}} must not have leading or trailing whitespace',
   }),
   location: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
