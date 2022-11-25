@@ -10,21 +10,23 @@ const refresh = async (req, res) => {
   //     if (!activeSession) {
   //       return res.status(404).send({ message: "Invalid session" });
   //     }
-
+  console.log(req.user);
   const cookies = req.cookies;
   console.log('WE ARE ON REFRESH ROUTE');
-  console.log(cookies);
+  // console.log(cookies);
   if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' });
 
   const refreshToken = cookies.jwt;
 
-  jwt.verify(
+  await jwt.verify(
     refreshToken,
     REFRESH_TOKEN_SECRET_KEY,
     asyncHandler(async (err, decoded) => {
-      if (err) return res.status(403).json({ message: 'Forbidden' }).exec();
+      if (err) {
+        return res.status(403).json({ message: 'Refresh token expired' });
+      }
 
-      console.log(decoded);
+      // console.log(decoded);
       const foundUser = await User.findById({ _id: decoded.id });
       const session = await Session.findById({ _id: decoded.sid });
 
@@ -32,7 +34,7 @@ const refresh = async (req, res) => {
       if (!session) {
         return res.status(404).send({ message: 'Invalid session' });
       }
-      console.log(session);
+      console.log('SESSION', session);
       await Session.findByIdAndDelete(session._id);
       const newSession = await Session.create({
         uid: foundUser._id,
@@ -43,6 +45,17 @@ const refresh = async (req, res) => {
       };
       const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
         expiresIn: '1m',
+      });
+
+      const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
+        expiresIn: '5m',
+      });
+
+      res.cookie('jwt', refreshToken, {
+        httpOnly: true /* accessible only by web server */,
+        secure: true /* https */,
+        sameSite: 'None' /* cross-site cookie */,
+        maxAge: 7 * 24 * 60 * 60 * 1000 /* cookie expiry: set to match rT */,
       });
       res.json({
         token: accessToken,

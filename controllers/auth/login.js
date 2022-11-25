@@ -108,10 +108,9 @@ const logIn = asyncHandler(async (req, res) => {
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: '7d',
+    expiresIn: '5m',
   });
 
-  // Create secure cookie with refresh token
   res.cookie('jwt', refreshToken, {
     httpOnly: true /* accessible only by web server */,
     secure: true /* https */,
@@ -127,5 +126,3 @@ const logIn = asyncHandler(async (req, res) => {
 });
 
 module.exports = logIn;
-
-/// ========================= third method =========================

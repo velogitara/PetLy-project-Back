@@ -24,8 +24,14 @@ const authenticate = async (req, res, next) => {
     if (bearer !== 'Bearer') {
       throwUnauthorizedError();
     }
+    // const cookies = req.cookies;
+    // if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' });
+    // const refreshToken = cookies.jwt;
+    // await jwt.verify(refreshToken, REFRESH_TOKEN_SECRET_KEY);
+    // console.log('SID:', sessionId);
+    // console.log('USER ID FROM AUTH MIDDLEWARE', userId);
 
-    jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
+    await jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: 'forbidden, token expired' });
       }
