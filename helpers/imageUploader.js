@@ -44,8 +44,8 @@ const imageSize = {
 
 const imageUploader = async (folder, file, id) => {
   const imagesDir = path.join(__dirname, '../', 'public', folder);
-  const { path: tempUpload, originalname } = file;
-  const fileExtension = originalname.split('.').pop();
+  const { path: tempUpload } = file;
+  const fileExtension = 'jpg';
   const imageURL = {};
 
   try {
@@ -53,7 +53,7 @@ const imageUploader = async (folder, file, id) => {
 
     const resizeImage = (width, height, filename) => {
       const resultUpload = path.join(imagesDir, filename);
-      image.cover(width, height).write(resultUpload);
+      image.cover(width, height).quality(80).write(resultUpload);
     };
 
     const processImage = () => {
