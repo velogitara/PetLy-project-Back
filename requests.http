@@ -37,6 +37,16 @@ content-type: application/json
 
 ###
 
+POST http://localhost:3001/api/auth/login/
+content-type: application/json
+
+{
+    "email": "ivetta@mail.com",
+    "password": "12345"
+}
+
+###
+
 POST https://petly-project-goit.herokuapp.com/api/auth/login/
 content-type: application/json
 
@@ -112,22 +122,21 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### AddNotice
 
-POST https://petly-project-goit.herokuapp.com/api/notices/
+POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2OTAyMTY3NywiZXhwIjoxNjY5MDY0ODc3fQ.4R7l0F_5UEQo8nUChbX2EWoCadHUBFv_gC5CvHN1ISo
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTQ3ODc3OSwiZXhwIjoxNjY5NTIxOTc5fQ.clR4HkHZLq_5CpZO7Rk4mjp3ZDdEbFHGnND2QU1BdRE
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {  
     "category": "sell",
-    "title": "Cute cat looking for a good family",
-    "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
+    "title": "Cute citty looking for a good family",
     "name": "Napoleon",
     "location": "Dnipro",
     "sex": "male",
     "price": 1200,
-    "comments": "Please, feel free to contact me at the weekend",
+    "comments": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "birthday": "2021-11-16"
 }
 
