@@ -14,11 +14,13 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "date-format": "^4.0.14",
     "dotenv": "^16.0.3",
     "express": "4.17.1",
+    "express-async-handler": "^1.2.0",
     "gravatar": "^1.8.2",
     "jimp": "^0.16.2",
     "joi": "^17.6.2",

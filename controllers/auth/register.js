@@ -1,12 +1,13 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const asyncHandler = require('express-async-handler');
 
 const { requestError } = require('../../helpers');
-const { User } = require('../../models');
-const { TOKEN_EXPIRES_IN } = process.env;
-const { SECRET_KEY } = process.env;
+const { User, Session } = require('../../models');
+// const { TOKEN_EXPIRES_IN } = process.env;
+const { ACCESS_TOKEN_SECRET_KEY, REFRESH_TOKEN_SECRET_KEY } = process.env;
 
-const register = async (req, res) => {
+const register = asyncHandler(async (req, res) => {
   const { name, email, password, phone } = req.body;
   const user = await User.findOne({ email });
   if (user) {
@@ -24,20 +25,38 @@ const register = async (req, res) => {
 
   const { _id: userId } = createUser;
 
-  const payload = {
-    id: userId,
-  };
-  const token = jwt.sign(payload, SECRET_KEY, {
-    expiresIn: TOKEN_EXPIRES_IN,
+  const newSession = await Session.create({
+    uid: userId,
   });
 
-  const result = await User.findByIdAndUpdate(userId, { token }, { new: true });
+  const payload = {
+    id: userId,
+    sid: newSession._id,
+  };
+  const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
+    expiresIn: '15m',
+  });
+
+  const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
+    expiresIn: '7d',
+  });
+
+  // Create secure cookie with refresh token
+  res.cookie('jwt', refreshToken, {
+    httpOnly: true /* accessible only by web server */,
+    secure: true /* https */,
+    sameSite: 'None' /* cross-site cookie */,
+    maxAge: 7 * 24 * 60 * 60 * 1000 /* cookie expiry: set to match rT */,
+  });
+
+  // Send accessToken containing userId
+
   res.status(201).json({
     data: {
-      token: result.token,
-      id: result._id,
+      token: accessToken,
+      id: userId,
     },
   });
-};
+});
 
 module.exports = register;
