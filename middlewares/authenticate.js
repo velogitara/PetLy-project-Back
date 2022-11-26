@@ -11,7 +11,6 @@ const throwUnauthorizedError = () => {
 const authenticate = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization;
-    // console.log(authHeader);
     if (!authHeader?.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
