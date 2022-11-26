@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const logOut = async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204); /* No content */
+  if (!cookies?.jwt) return res.sendStatus(401); /* No content */
 
   const refreshToken = cookies.jwt;
 

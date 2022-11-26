@@ -104,11 +104,11 @@ const logIn = asyncHandler(async (req, res) => {
   };
 
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '1m',
+    expiresIn: '15m',
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: '5m',
+    expiresIn: '7d',
   });
 
   res.cookie('jwt', refreshToken, {

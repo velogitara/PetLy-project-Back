@@ -15,7 +15,7 @@ async function removePet(req, res) {
 
   await imageRemover(pet.imageURL).then(
     res.json({
-      message: 'Pet deleted succesfully!',
+      message: 'Pet deleted successfully!',
     })
   );
 }

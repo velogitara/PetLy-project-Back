@@ -30,15 +30,15 @@ const register = asyncHandler(async (req, res) => {
   });
 
   const payload = {
-    uid: userId,
+    id: userId,
     sid: newSession._id,
   };
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '1m',
+    expiresIn: '15m',
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: '5m',
+    expiresIn: '7d',
   });
 
   // Create secure cookie with refresh token

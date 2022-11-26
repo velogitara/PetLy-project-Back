@@ -30,16 +30,18 @@ const authenticate = async (req, res, next) => {
     // console.log('SID:', sessionId);
     // console.log('USER ID FROM AUTH MIDDLEWARE', userId);
 
-    await jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
+    jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: 'forbidden, token expired' });
       }
       const user = await User.findById(decoded.id);
+      // console.log('Authenticate user:', user);
       if (!user) {
         return res.status(404).send({ message: 'Invalid user' });
       }
 
       req.user = user;
+      // console.log(req.user);
       next();
     });
   } catch (error) {
