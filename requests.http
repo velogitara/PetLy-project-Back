@@ -37,6 +37,16 @@ content-type: application/json
 
 ###
 
+POST http://localhost:3001/api/auth/login/
+content-type: application/json
+
+{
+    "email": "ivetta@mail.com",
+    "password": "12345"
+}
+
+###
+
 POST https://petly-project-goit.herokuapp.com/api/auth/login/
 content-type: application/json
 
@@ -112,9 +122,9 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### AddNotice
 
-POST https://petly-project-goit.herokuapp.com/api/notices/
+POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2OTAyMTY3NywiZXhwIjoxNjY5MDY0ODc3fQ.4R7l0F_5UEQo8nUChbX2EWoCadHUBFv_gC5CvHN1ISo
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTUzNTk3OSwiZXhwIjoxNjY5NTc5MTc5fQ.g5P53shle0NNVSkrK1GjSUAu9c5JMTn5uiVo1oGpw_I
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
@@ -122,18 +132,17 @@ Content-Disposition: form-data; name="data"
 {  
     "category": "sell",
     "title": "Cute cat looking for a good family",
-    "description": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "name": "Napoleon",
     "location": "Dnipro",
     "sex": "male",
     "price": 1200,
-    "comments": "Please, feel free to contact me at the weekend",
+    "comments": "Very nice and polite cat hopes to find home and loving family to become a part of",
     "birthday": "2021-11-16"
 }
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="image"; filename="cat.jpg"
-Content-Type: image/png
+Content-Type: image/jpg
 
 < ../temp/cat.jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
@@ -205,5 +214,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### RemoveNotice
 
-DELETE https://petly-project-goit.herokuapp.com/api/notices/63714ba37d632b76b654476c
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODg2MDU0NSwiZXhwIjoxNjY4ODY0MTQ1fQ.2vJj9InQ8rsOQ1sZDe4lt1BIJTW6LuxLa0LqpXDzhHM
+DELETE http://localhost:3001/api/notices/6383b638b7ffc3cc025ca897
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTU3NzkwMywiZXhwIjoxNjY5NjIxMTAzfQ._zHIl7R4-Ekztiq4KPsxsS-Fe62TFxkaHy0WawOMtsk

@@ -1,28 +1,25 @@
-const fs = require('fs/promises');
-const path = require('path');
+// const cloudinary = require('../middlewares/cloudinary');
 
 const imageRemover = async imageURL => {
-  const pathToClean = path.join(__dirname, '../', 'public');
-
-  const files = Object.values(imageURL);
-
-  await Promise.all(
-    files.map(
-      file =>
-        new Promise((resolve, reject) => {
-          try {
-            fs.unlink(path.join(pathToClean, file), err => {
-              if (err) throw err;
-              console.log(`${file} was deleted`);
-              resolve();
-            });
-          } catch (err) {
-            console.error(err);
-            reject(err);
-          }
-        })
-    )
-  );
+  // const files = Object.values(imageURL);
+  // await Promise.all(
+  //   files.map(
+  //     file =>
+  //       new Promise((resolve, reject) => {
+  //         (async () => {
+  //           const name = file.split('.').pop();
+  //           try {
+  //             await cloudinary.uploader.destroy(name, function (result) {
+  //               console.log(result);
+  //             });
+  //           } catch (error) {
+  //             console.error(error);
+  //             reject(error);
+  //           }
+  //         })();
+  //       })
+  //   )
+  // );
 };
 
 module.exports = imageRemover;
