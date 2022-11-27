@@ -14,11 +14,8 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
-<<<<<<< HEAD
     "cloudinary": "^1.32.0",
-=======
     "cookie-parser": "^1.4.6",
->>>>>>> 402ee32fe4e8b33e5486909b585cee4ae40f0376
     "cors": "2.8.5",
     "cross-env": "7.0.3",
     "date-format": "^4.0.14",
