@@ -98,7 +98,7 @@ const logIn = asyncHandler(async (req, res) => {
   if (!passwordCompare) {
     throw requestError(401, 'Email or password wrong');
   }
-
+  // req.user = user;
   const newSession = await Session.create({
     uid: user._id,
   });

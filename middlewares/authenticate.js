@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const jwt = require('jsonwebtoken');
+const asyncHandler = require('express-async-handler');
 
 const { requestError } = require('../helpers');
 const { ACCESS_TOKEN_SECRET_KEY } = process.env;
@@ -8,7 +9,7 @@ const throwUnauthorizedError = () => {
   throw requestError(401, 'Unauthorized');
 };
 
-const authenticate = async (req, res, next) => {
+const authenticate = asyncHandler(async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization;
     if (!authHeader?.startsWith('Bearer ')) {
@@ -30,7 +31,7 @@ const authenticate = async (req, res, next) => {
     // console.log('SID:', sessionId);
     // console.log('USER ID FROM AUTH MIDDLEWARE', userId);
 
-    jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
+    await jwt.verify(token, ACCESS_TOKEN_SECRET_KEY, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: 'forbidden, token expired' });
       }
@@ -41,7 +42,6 @@ const authenticate = async (req, res, next) => {
       }
 
       req.user = user;
-      // console.log(req.user);
       next();
     });
   } catch (error) {
@@ -49,6 +49,6 @@ const authenticate = async (req, res, next) => {
 
     next(error);
   }
-};
+});
 
 module.exports = authenticate;
