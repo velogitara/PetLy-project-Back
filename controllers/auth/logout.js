@@ -10,6 +10,8 @@ const logOut = async (req, res) => {
 
   const { sid } = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET_KEY);
 
+  if (!sid) return res.send(403).json({ message: 'invalid session' });
+
   await Session.findByIdAndDelete(sid);
 
   // const { _id } = req.user;

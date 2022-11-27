@@ -15,7 +15,7 @@ const refresh = async (req, res) => {
   //     if (!activeSession) {
   //       return res.status(404).send({ message: "Invalid session" });
   //     }
-  console.log(req.user);
+  // console.log(req.user);
   const cookies = req.cookies;
   console.log('WE ARE ON REFRESH ROUTE');
   // console.log(cookies);
