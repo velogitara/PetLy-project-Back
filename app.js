@@ -2,10 +2,24 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const corsOption = require('./config/corsOption');
+
 // const fs = require('fs/promises');
 // const moment = require('moment');
 
 require('dotenv').config();
+
+// const cloudinary = require('cloudinary').v2;
+// console.log(cloudinary.config().cloud_name);
+
+// cloudinary.uploader
+//   .upload('./istockphoto-522855255-612x612.jpg', {
+//     resource_type: 'image',
+//   })
+//   .then(res => {
+//     console.log('success', JSON.stringify(res, null, 2));
+//   });
 
 const { ROUTES } = require('./routes/constants');
 
@@ -20,9 +34,10 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
-app.use(cors());
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 // app.use(async (req, res, next) => {
 //   const { method, url } = req;

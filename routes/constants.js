@@ -4,6 +4,7 @@ const ROUTES = {
     signUp: '/register',
     signIn: '/login',
     signOut: '/logout',
+    refresh: '/refresh',
     userVerify: '/verify/:verificationToken',
     userDelete: '/delete',
   },
