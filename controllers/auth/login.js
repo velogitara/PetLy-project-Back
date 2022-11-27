@@ -79,7 +79,12 @@ const jwt = require('jsonwebtoken');
 
 const { User, Session } = require('../../models');
 const { requestError } = require('../../helpers');
-const { ACCESS_TOKEN_SECRET_KEY, REFRESH_TOKEN_SECRET_KEY } = process.env;
+const {
+  ACCESS_TOKEN_SECRET_KEY,
+  REFRESH_TOKEN_SECRET_KEY,
+  ACCESS_TOKEN_EXPIRES_IN,
+  REFRESH_TOKEN_EXPIRES_IN,
+} = process.env;
 
 const logIn = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -104,11 +109,11 @@ const logIn = asyncHandler(async (req, res) => {
   };
 
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '15m',
+    expiresIn: ACCESS_TOKEN_EXPIRES_IN,
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: '7d',
+    expiresIn: REFRESH_TOKEN_EXPIRES_IN,
   });
 
   res.cookie('jwt', refreshToken, {

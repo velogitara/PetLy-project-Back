@@ -5,7 +5,12 @@ const asyncHandler = require('express-async-handler');
 const { requestError } = require('../../helpers');
 const { User, Session } = require('../../models');
 // const { TOKEN_EXPIRES_IN } = process.env;
-const { ACCESS_TOKEN_SECRET_KEY, REFRESH_TOKEN_SECRET_KEY } = process.env;
+const {
+  ACCESS_TOKEN_SECRET_KEY,
+  REFRESH_TOKEN_SECRET_KEY,
+  ACCESS_TOKEN_EXPIRES_IN,
+  REFRESH_TOKEN_EXPIRES_IN,
+} = process.env;
 
 const register = asyncHandler(async (req, res) => {
   const { name, email, password, phone } = req.body;
@@ -34,11 +39,11 @@ const register = asyncHandler(async (req, res) => {
     sid: newSession._id,
   };
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '15m',
+    expiresIn: ACCESS_TOKEN_EXPIRES_IN,
   });
 
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: '7d',
+    expiresIn: REFRESH_TOKEN_EXPIRES_IN,
   });
 
   // Create secure cookie with refresh token
