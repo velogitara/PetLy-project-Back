@@ -70,37 +70,34 @@ const imageUploader = async (folder, file, id) => {
       sizes.map(
         ([name, size]) =>
           new Promise((resolve, reject) => {
-            try {
-              const { width, height } = size;
-              const fileName = `${id}-${width}x${height}`;
-              const fileNameRetina = `${id}-${width}x${height}@2x`;
-              const nameRetina = `${name}_retina`;
-              resizeImage({ width, height, fileName, fileExtension, name });
-              resizeImage({
-                width: width * 2,
-                height: height * 2,
-                fileName: fileNameRetina,
-                fileExtension,
-                name: nameRetina,
-              });
-              resolve();
-            } catch (error) {
-              reject(error);
-            }
+            (async () => {
+              try {
+                const { width, height } = size;
+                const fileName = `${id}-${width}x${height}`;
+                const fileNameRetina = `${id}-${width}x${height}@2x`;
+                const nameRetina = `${name}_retina`;
+                await resizeImage({ width, height, fileName, fileExtension, name });
+                await resizeImage({
+                  width: width * 2,
+                  height: height * 2,
+                  fileName: fileNameRetina,
+                  fileExtension,
+                  name: nameRetina,
+                });
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            })();
           })
       )
     ).then(() => imageURL);
-
-    console.log('imageURL before return:', result);
+    await fs.unlink(tempUpload);
     return result;
   };
 
   try {
     return await processImage();
-
-    // await fs.unlink(tempUpload);
-    // console.log(result);
-    // return result;
   } catch (error) {
     await fs.unlink(file.path);
     throw error;
