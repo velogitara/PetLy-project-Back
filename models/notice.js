@@ -16,7 +16,7 @@ const noticeSchema = new Schema(
     title: {
       type: String,
       required: [true, 'Set title for notice'],
-      unique: true,
+      // unique: true,
     },
     name: {
       type: String,
@@ -30,12 +30,13 @@ const noticeSchema = new Schema(
 
     breed: {
       type: String,
-      default: 'outbred',
+      default: 'outbreed',
     },
 
     location: {
       type: String,
-      required: [true, 'Set location'],
+      default: 'planet, Earth',
+      // required: [true, 'Set location'],
     },
 
     sex: {
@@ -57,6 +58,7 @@ const noticeSchema = new Schema(
     comments: {
       type: String,
       default: null,
+      required: [true, 'Set comments'],
     },
 
     owner: {
@@ -97,12 +99,15 @@ const addNoticeSchema = joi.object({
   birthday: joi.string().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
   }),
-  location: joi.string().required().messages({
-    'string.base': `{{#label}} should be a type of 'text'`,
-    'string.empty': `{{#label}} cannot be an empty field`,
-    'string.trim': '{{#label}} must not have leading or trailing whitespace',
-    'any.required': `missing required field: {{#label}}`,
-  }),
+  location: joi
+    .string()
+    //   .required()
+    .messages({
+      'string.base': `{{#label}} should be a type of 'text'`,
+      //   'string.empty': `{{#label}} cannot be an empty field`,
+      'string.trim': '{{#label}} must not have leading or trailing whitespace',
+      //   'any.required': `missing required field: {{#label}}`,
+    }),
   sex: joi
     .string()
     .valid(...SEX)
@@ -116,7 +121,7 @@ const addNoticeSchema = joi.object({
   price: joi.number().messages({
     'number.base': `{{#label}} should be a type of 'number'`,
   }),
-  comments: joi.string().messages({
+  comments: joi.string().required().messages({
     'string.base': `{{#label}} should be a type of 'text'`,
     'string.empty': `{{#label}} cannot be an empty field`,
     'string.trim': '{{#label}} must not have leading or trailing whitespace',
