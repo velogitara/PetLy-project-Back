@@ -124,14 +124,14 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTQ3ODc3OSwiZXhwIjoxNjY5NTIxOTc5fQ.clR4HkHZLq_5CpZO7Rk4mjp3ZDdEbFHGnND2QU1BdRE
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTUzNTk3OSwiZXhwIjoxNjY5NTc5MTc5fQ.g5P53shle0NNVSkrK1GjSUAu9c5JMTn5uiVo1oGpw_I
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
 
 {  
     "category": "sell",
-    "title": "Cute citty looking for a good family",
+    "title": "Cute cat looking for a good family",
     "name": "Napoleon",
     "location": "Dnipro",
     "sex": "male",
@@ -142,7 +142,7 @@ Content-Disposition: form-data; name="data"
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="image"; filename="cat.jpg"
-Content-Type: image/png
+Content-Type: image/jpg
 
 < ../temp/cat.jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--

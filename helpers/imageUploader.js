@@ -1,7 +1,5 @@
 const fs = require('fs/promises');
-// const path = require('path');
-// const jimp = require('jimp');
-const { cloudinary } = require('../middlewares');
+const cloudinary = require('../middlewares/cloudinary');
 
 const imageSize = {
   avatars: { profile: { width: 233, height: 233 } },
@@ -44,56 +42,65 @@ const imageSize = {
 };
 
 const imageUploader = async (folder, file, id) => {
-  // const imagesDir = path.join(__dirname, '../', 'public', folder);
   const { path: tempUpload } = file;
   const fileExtension = 'jpg';
   const imageURL = {};
 
-  // console.log(tempUpload);
-
-  try {
-    // const image = await jimp.read(tempUpload);
-
-    const resizeImage = async (width, height, filename, fileExtension) => {
-      // const resultUpload = path.join(imagesDir, filename);
-      // image.cover(width, height).quality(80).write(resultUpload);
-      // const picture = await cloudinaryUpload.image(tempUpload, {
-      //   gravity: 'face',
-      //   height,
-      //   width,
-      //   crop: 'lfill',
-      //   format: fileExtension,
-      // });
-      // console.log(picture);
+  const resizeImage = async ({ width, height, fileName, fileExtension, name }) => {
+    try {
       const result = await cloudinary.uploader.upload(tempUpload, {
-        public_id: `petly/images/${folder}/${filename}`,
+        public_id: `petly/images/${folder}/${fileName}`,
         gravity: 'face',
         height,
         width,
         crop: 'lfill',
         format: fileExtension,
       });
-      return result?.url;
-    };
+      imageURL[name] = result?.secure_url ?? '';
+      // console.log(imageURL);
+      // return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const processImage = async () => {
-      const sizes = Object.entries(imageSize[folder]);
-      sizes.forEach(async size => {
-        const { width, height } = size[1];
-        const fileName = `${id}-${width}x${height}.${fileExtension}`;
-        const fileNameRetina = `${id}-${width}x${height}@2x.${fileExtension}`;
-        const url = await resizeImage(width, height, fileName, fileExtension);
-        const urlRetina = await resizeImage(width * 2, height * 2, fileNameRetina, fileExtension);
-        imageURL[size[0]] = url;
-        imageURL[`${size[0]}_retina`] = urlRetina;
-      });
+  const processImage = async () => {
+    const sizes = Object.entries(imageSize[folder]);
+    const result = await Promise.all(
+      sizes.map(
+        ([name, size]) =>
+          new Promise((resolve, reject) => {
+            try {
+              const { width, height } = size;
+              const fileName = `${id}-${width}x${height}`;
+              const fileNameRetina = `${id}-${width}x${height}@2x`;
+              const nameRetina = `${name}_retina`;
+              resizeImage({ width, height, fileName, fileExtension, name });
+              resizeImage({
+                width: width * 2,
+                height: height * 2,
+                fileName: fileNameRetina,
+                fileExtension,
+                name: nameRetina,
+              });
+              resolve();
+            } catch (error) {
+              reject(error);
+            }
+          })
+      )
+    ).then(() => imageURL);
 
-      return imageURL;
-    };
+    console.log('imageURL before return:', result);
+    return result;
+  };
 
-    await fs.unlink(tempUpload);
-    // console.log(imageURL);
+  try {
     return await processImage();
+
+    // await fs.unlink(tempUpload);
+    // console.log(result);
+    // return result;
   } catch (error) {
     await fs.unlink(file.path);
     throw error;
