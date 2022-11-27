@@ -18,9 +18,9 @@ const addNotice = async (req, res) => {
   }
 
   const imageURL = await imageUploader('notices', file, _id);
-  const result = await Notice.findByIdAndUpdate(_id, { imageURL }, { new: true });
-
-  res.status(201).json({ data: result });
+  await Notice.findByIdAndUpdate(_id, { imageURL }, { new: true }).then(result =>
+    res.status(201).json({ data: result })
+  );
 };
 
 module.exports = addNotice;

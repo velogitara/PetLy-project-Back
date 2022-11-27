@@ -16,7 +16,6 @@ const noticeSchema = new Schema(
     title: {
       type: String,
       required: [true, 'Set title for notice'],
-      // unique: true,
     },
     name: {
       type: String,
