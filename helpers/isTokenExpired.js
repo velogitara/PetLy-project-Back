@@ -4,7 +4,6 @@ const requestError = require('./requestError');
 const isTokenExpired = async (token, SECRET_KEY, _id, User, user) => {
   try {
     verify(token, SECRET_KEY, user);
-    // console.log(token);
     console.log('TOKEN OK');
     if (user.token) {
       throw requestError(409, 'User already logged In!');
