@@ -11,7 +11,7 @@ const {
 
 const refresh = async (req, res) => {
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' });
+  if (!cookies?.jwt) return res.status(417).json({ message: 'Unauthorized' });
 
   const refreshToken = cookies.jwt;
 
