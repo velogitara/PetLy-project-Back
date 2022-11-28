@@ -3,11 +3,19 @@ const { requestError } = require('../../helpers');
 
 const listNoticesByCategory = async (req, res) => {
   const { category } = req.params;
-  const { page = 1, limit = 8 } = req.query;
+  const { page = 1, limit = 8, query } = req.query;
   const skip = (page - 1) * limit;
 
-  const count = await Notice.count({ category });
-  const result = await Notice.find({ category }, '-name -sex -comments -createdAt -updatedAt', {
+  let dbRequest = {};
+
+  if (!query) {
+    dbRequest = { category };
+  } else {
+    dbRequest = { $text: { $search: `${query}` }, category };
+  }
+
+  const count = await Notice.count(dbRequest);
+  const result = await Notice.find(dbRequest, '-name -sex -comments -createdAt -updatedAt', {
     skip,
     limit,
   })

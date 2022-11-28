@@ -8,9 +8,9 @@ const {
   ROUTES: { notices },
 } = require('../constants');
 
-router.get(notices.listNoticesByQuery, controllerWrapper(controller.listNoticeByQuery));
+// router.get(notices.listNoticesByQuery, controllerWrapper(controller.listNoticeByQuery));
 
-router.get(notices.listNotices, controllerWrapper(controller.listNotices));
+// router.get(notices.listNotices, controllerWrapper(controller.listNotices));
 
 router.get(notices.listNoticesByCategory, controllerWrapper(controller.listNoticesByCategory));
 
@@ -33,13 +33,6 @@ router.patch(
   validateBody(schemas.updateFavoriteSchema),
   controllerWrapper(controller.updateFavorites)
 );
-
-// router.put(
-//   notices.updateNotice,
-//   isValidId,
-//   validateBody(schemas.updateSchema),
-//   controllerWrapper(controller.updateNotice)
-// );
 
 router.delete(
   notices.removeNotice,
