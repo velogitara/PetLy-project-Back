@@ -1,5 +1,5 @@
 const { Notice } = require('../../models/notice');
-const { requestError } = require('../../helpers');
+const { requestError, imageRemover } = require('../../helpers');
 
 const removeNotice = async (req, res) => {
   const { noticeId } = req.params;
@@ -12,8 +12,8 @@ const removeNotice = async (req, res) => {
     throw requestError(404, 'Notice not found');
   }
 
-  // await imageRemover(result.imageURL).then(res.json({ message: 'Notice successfuly deleted' }));
-  res.json({ message: 'Notice successfully deleted' });
+  await imageRemover(result.imageURL).then(res.json({ message: 'Notice successfully deleted' }));
+  // res.json({ message: 'Notice successfully deleted' });
 };
 
 module.exports = removeNotice;

@@ -24,6 +24,18 @@ content-type: application/json
     "phone": "(111) 111-1111"
 }
 
+###
+
+POST http://localhost:3001/api/auth/register/
+content-type: application/json
+
+{
+    "name": "Nora Xeno",
+    "email": "xeno@mail.com",
+    "password": "12345",
+    "phone": "+111-1111111111"
+}
+
 
 ### SignIn
 
@@ -32,7 +44,7 @@ content-type: application/json
 
 {
     "email": "ivetta@mail.com",
-    "password": "12345"
+    "password": "12345"б
 }
 
 ###
@@ -124,7 +136,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 POST http://localhost:3001/api/notices/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTUzNTk3OSwiZXhwIjoxNjY5NTc5MTc5fQ.g5P53shle0NNVSkrK1GjSUAu9c5JMTn5uiVo1oGpw_I
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODQ1Njg1NTdlNzdlNzdlNTBjOTBjYSIsImlhdCI6MTY2OTYxNzI4NSwiZXhwIjoxNjY5NjYwNDg1fQ.xUwwSMD-3BURQbbgTrIrg3kwEao_9RA3I16Rvu3u1Zc
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="data"
@@ -214,5 +226,5 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4N
 
 ### RemoveNotice
 
-DELETE http://localhost:3001/api/notices/6383b638b7ffc3cc025ca897
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsImlhdCI6MTY2OTU3NzkwMywiZXhwIjoxNjY5NjIxMTAzfQ._zHIl7R4-Ekztiq4KPsxsS-Fe62TFxkaHy0WawOMtsk
+DELETE http://localhost:3001/api/notices/63845d374598a0299b4f3512
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODQ1Njg1NTdlNzdlNzdlNTBjOTBjYSIsImlhdCI6MTY2OTYxNzI4NSwiZXhwIjoxNjY5NjYwNDg1fQ.xUwwSMD-3BURQbbgTrIrg3kwEao_9RA3I16Rvu3u1Zc
