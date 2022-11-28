@@ -14,8 +14,6 @@ const logOut = async (req, res) => {
 
   await Session.findByIdAndDelete(sid);
 
-  // const { _id } = req.user;
-  // await User.findByIdAndUpdate(_id, { token: null });
   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
   res.json({
     message: 'logout success, Cookie cleared ',

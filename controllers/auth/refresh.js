@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 
 const { User, Session } = require('../../models');
-// const { requestError } = require('../../helpers');
 const {
   ACCESS_TOKEN_SECRET_KEY,
   REFRESH_TOKEN_SECRET_KEY,
@@ -11,14 +10,7 @@ const {
 } = process.env;
 
 const refresh = async (req, res) => {
-  // const activeSession = await Session.findById(req.body.sid);
-  //     if (!activeSession) {
-  //       return res.status(404).send({ message: "Invalid session" });
-  //     }
-  // console.log(req.user);
   const cookies = req.cookies;
-  console.log('WE ARE ON REFRESH ROUTE');
-  // console.log(cookies);
   if (!cookies?.jwt) return res.status(401).json({ message: 'Unauthorized' });
 
   const refreshToken = cookies.jwt;
@@ -31,7 +23,6 @@ const refresh = async (req, res) => {
         return res.status(403).json({ message: 'Refresh token expired' });
       }
 
-      // console.log(decoded);
       const foundUser = await User.findById({ _id: decoded.id });
       const session = await Session.findById({ _id: decoded.sid });
 
