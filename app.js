@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const corsOption = require('./config/corsOption');
+const verselCORS = require('./config/verselCORS');
 
 // const fs = require('fs/promises');
 // const moment = require('moment');
@@ -38,6 +39,7 @@ app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+app.use(verselCORS);
 
 // app.use(async (req, res, next) => {
 //   const { method, url } = req;
