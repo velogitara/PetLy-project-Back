@@ -5,6 +5,6 @@
 //   `https://pet-ly-project-back.vercel.app:${PORT}`,
 //   'https://velogitara.github.io',
 // ];
-const allowedOrigins = ['https://velogitara.github.io'];
+const allowedOrigins = ['https://velogitara.github.io', 'http://localhost:3000'];
 
 module.exports = allowedOrigins;
