@@ -9,6 +9,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://pet-ly-project-back.vercel.app',
   'https://velogitara.github.io',
+  'https://velogitara.github.io/petly-project-front',
 ];
 
 module.exports = allowedOrigins;
