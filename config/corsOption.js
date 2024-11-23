@@ -11,11 +11,17 @@ const corsOptions = {
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 200,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Headers':
-      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+  headers: req => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+      return {
+        'Access-Control-Allow-Origin': origin, // Dynamically set origin
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Headers':
+          'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+      };
+    }
+    return {}; // Return an empty object if the origin is not allowed
   },
 };
 
