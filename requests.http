@@ -1,0 +1,237 @@
+######### AUTH ########
+
+### SignUp
+
+POST https://petly-project-goit.herokuapp.com/api/auth/register/
+content-type: application/json
+
+{
+    "name": "Ivetta Leana",
+    "email": "ivetta@mail.com",
+    "password": "12345",
+    "phone": "(111) 111-1111"
+}
+
+###
+
+POST https://petly-project-goit.herokuapp.com/api/auth/register/
+content-type: application/json
+
+{
+    "name": "Xara Zeng",
+    "email": "zeng@mail.com",
+    "password": "54321",
+    "phone": "(111) 111-1111"
+}
+
+###
+
+POST http://localhost:3001/api/auth/register/
+content-type: application/json
+
+{
+    "name": "Nora Xeno",
+    "email": "xeno@mail.com",
+    "password": "12345",
+    "phone": "+111-1111111111"
+}
+
+
+### SignIn
+
+POST https://petly-project-goit.herokuapp.com/api/auth/login/
+content-type: application/json
+
+{
+    "email": "ivetta@mail.com",
+    "password": "12345"
+}
+
+###
+
+POST http://localhost:3001/api/auth/login/
+content-type: application/json
+
+{
+    "email": "ivetta@mail.com",
+    "password": "12345"
+}
+
+###
+
+POST https://petly-project-goit.herokuapp.com/api/auth/login/
+content-type: application/json
+
+{
+    "email": "zeng@mail.com",
+    "password": "54321"
+}
+
+
+### SignOut
+
+GET  https://petly-project-goit.herokuapp.com/api/auth/logout/
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzAyMTU4NzQ3NWQwMDdmYjg1ZDNkNCIsImlhdCI6MTY2ODc1NzU0OCwiZXhwIjoxNjY4NzYxMTQ4fQ.jl-hATu7TpwqpRzE9M8GcP-lxYcmkPDTqN6tBYpG2JM
+
+
+######### NEWS ########
+
+
+
+GET https://petly-project-goit.herokuapp.com/api/news/
+
+
+
+######## listNews 2nd page
+GET http://localhost:3001/api/news?page=2
+
+######## 
+POST http://localhost:3001/api/news
+content-type: application/json
+
+{
+    "title": "Exanple",
+    "description": "54321",
+       "url": "ghghghg"
+}
+
+
+GET https://petly-project-goit.herokuapp.com/api/news/search/:query/
+
+######SERVICES-SIDEBAR############
+GET  https://petly-project-goit.herokuapp.com/api/services
+
+
+######### NOTICES ########
+
+### ListNotices
+
+GET https://petly-project-goit.herokuapp.com/api/notices/
+
+### ListNoticesByQuery
+
+GET https://petly-project-goit.herokuapp.com/api/notices/?category=sell&query=cat
+
+
+### ListNoticesByCategory
+
+GET http://localhost:3001/api/notices/categories/sell?page=1&limit=8&query=dog
+
+
+### ListNoticesByQuery
+
+GET http://localhost:3001/api/notices/?query=citty&category=sell&page=1&limit=8
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODQ1Njg1NTdlNzdlNzdlNTBjOTBjYSIsImlhdCI6MTY2OTYxNzI4NSwiZXhwIjoxNjY5NjYwNDg1fQ.xUwwSMD-3BURQbbgTrIrg3kwEao_9RA3I16Rvu3u1Zc
+
+
+### GetNotiseById
+
+GET https://petly-project-goit.herokuapp.com/api/notices/63714b717d632b76b6544769
+
+
+### ListUserNotices
+
+GET http://localhost:3001/api/notices/own?query=dog
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODRjYWM1ZTRiZmYyMGEzMWI0NGVlNCIsImlhdCI6MTY2OTY0NzA0NSwiZXhwIjoxNjY5NjkwMjQ1fQ.Je_f3HDblkfyBJJ6kBTR0xAFjPabQr6zAa7HY_L_qCk
+
+
+
+### AddNotice
+
+POST http://localhost:3001/api/notices/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODQ1Njg1NTdlNzdlNzdlNTBjOTBjYSIsImlhdCI6MTY2OTYxNzI4NSwiZXhwIjoxNjY5NjYwNDg1fQ.xUwwSMD-3BURQbbgTrIrg3kwEao_9RA3I16Rvu3u1Zc
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{  
+    "category": "sell",
+    "title": "Cute cat looking for a good family",
+    "name": "Napoleon",
+    "location": "Dnipro",
+    "sex": "male",
+    "price": 1200,
+    "comments": "Very nice and polite cat hopes to find home and loving family to become a part of",
+    "birthday": "2021-11-16"
+}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/jpg
+
+< ../temp/cat.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+POST https://petly-project-goit.herokuapp.com/api/notices/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzczODA2ZjkyNjkyNTViNmE5ZmU3MiIsImlhdCI6MTY2ODc1OTk2OSwiZXhwIjoxNjY4NzYzNTY5fQ.A0GCRMhSsL6az5opTa43RA4IropPd_JK3d9kECo2IHs
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{   
+    "category": "sell",
+    "title": "Cute dog looking for a good family",
+    "description": "Very nice and polite dog hopes to find home and loving family to become a part of",
+    "name": "Nora",
+    "location": "Lviv",
+    "sex": "female",
+    "price": 1000,
+    "comments": "Please, feel free to contact me at the weekend"
+}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/png
+
+< ../temp/dog.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+POST https://petly-project-goit.herokuapp.com/api/notices/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzczODA2ZjkyNjkyNTViNmE5ZmU3MiIsImlhdCI6MTY2ODc1OTk2OSwiZXhwIjoxNjY4NzYzNTY5fQ.A0GCRMhSsL6az5opTa43RA4IropPd_JK3d9kECo2IHs
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="data"
+
+{   
+    "category": "sell",
+    "title": "Cute bird looking for a good friend",
+    "description": "Very nice and polite bird hopes to find home and loving family to become a part of",
+    "name": "Patty",
+    "location": "Kyiv",
+    "sex": "male",
+    "price": 100,
+    "comments": "Please, feel free to contact me at the weekend"
+}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="cat.jpg"
+Content-Type: image/png
+
+< ../temp/bird.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+### UpdateFavorites 
+
+PATCH http://localhost:3001/api/notices/favorites/6374f89550438de5e831afc5
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODRjYWM1ZTRiZmYyMGEzMWI0NGVlNCIsImlhdCI6MTY2OTY0NzA0NSwiZXhwIjoxNjY5NjkwMjQ1fQ.Je_f3HDblkfyBJJ6kBTR0xAFjPabQr6zAa7HY_L_qCk
+
+{   
+    "favorite": true
+}
+
+### RemoveNotice
+
+DELETE http://localhost:3001/api/notices/63845d374598a0299b4f3512
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyNTBhM2ZjOGNkZmQ5YjhmMGNiYSIsInNpZCI6IjYzODQ1Njg1NTdlNzdlNzdlNTBjOTBjYSIsImlhdCI6MTY2OTYxNzI4NSwiZXhwIjoxNjY5NjYwNDg1fQ.xUwwSMD-3BURQbbgTrIrg3kwEao_9RA3I16Rvu3u1Zc
