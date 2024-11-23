@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const corsOption = require('./config/corsOption');
+const corsMiddleware = require('./config/corsMiddlware');
 
 // const fs = require('fs/promises');
 // const moment = require('moment');
@@ -34,6 +35,8 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
+console.log('before configuring cors');
+app.use(corsMiddleware);
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));

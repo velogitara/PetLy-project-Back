@@ -3,9 +3,11 @@ const allowedOrigins = require('./allowedOrigins');
 // const corsOptions = {
 //   origin: (origin, callback) => {
 //     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//       console.log('Found origin');
+
 //       callback(null, true);
 //     } else {
-//       callback(new Error('Not allowed by CORS 1'));
+//       callback(new Error('Not allowed by CORS'));
 //     }
 //   },
 //   credentials: true,
@@ -25,21 +27,20 @@ const allowedOrigins = require('./allowedOrigins');
 //   },
 // };
 
-const corsOptions = (req, res, next) => {
-  const origin = req.headers.origin;
+// ===========================================================================================================================
 
-  if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin || '*');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-    return next();
-  }
-
-  res.status(403).send('Not allowed by CORS');
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      console.log('Found origin'); // This confirms we are processing the origin correctly
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 200,
 };
 
 module.exports = corsOptions;
