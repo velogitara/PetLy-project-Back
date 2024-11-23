@@ -1,19 +1,7 @@
 {
   "headers": [
     {
-      "builds": [
-        {
-          "src": "app.js",
-          "use": "@now/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/(.*)",
-
-          "dest": "app.js"
-        }
-      ],
+      "source": "/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "https://velogitara.github.io" },
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
