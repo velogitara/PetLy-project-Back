@@ -5,3 +5,7 @@ node_modules/
 # VSCode files
 .vscode/
 *.log
+.vercel
+
+# Local Netlify folder
+.netlify
