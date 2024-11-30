@@ -36,7 +36,6 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
-console.log('before configuring cors');
 app.use(cors(corsOption));
 // app.use(corsMiddleware);
 app.use(express.json());
