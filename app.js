@@ -57,7 +57,7 @@ app.use(ROUTES.news.baseRoute, newsRouter);
 app.use(ROUTES.friends.baseRoute, friendsRouter);
 
 app.use((req, res) => {
-  res.status(404).json({ message: 'Not found' });
+  res.status(404).json({ message: 'Hi there' });
 });
 
 app.use((err, req, res, next) => {
